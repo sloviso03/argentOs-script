@@ -1,8 +1,8 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30, 
-    "spacing": 8,
+    "height": 35, 
+    "spacing": 10,
     
     "modules-left": [
     	"custom/power",
@@ -15,7 +15,8 @@
     
     "modules-right": [
         "network",
-        "pulseaudio",        
+        "pulseaudio",
+        "backlight",        
 		"battery",
         "power-profiles-daemon"
     ],
@@ -42,10 +43,10 @@
          "format": "{name}: {icon}",
          "format-icons": {
              "1": "",
-             "2": "",
-             "3": "",
-             "4": "",
-             "5": "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
              "urgent": "",
              "focused": "",
              "default": ""
@@ -55,23 +56,25 @@
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format":  "   {:%H:%M}",
         "format-alt": "{:%Y-%m-%d}"
     },
 
     "network": {
             // "interface": "wlp2*", // (Optional) To force the use of this interface
-     	"format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
+     	"format-wifi": "  {essid}",
+        "format-ethernet": "{ipaddr}",
+        "tooltip-format": "{ifname}\n{ipaddr}/{cidr}",
+        "format-linked": "{ifname}",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
 
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
+        
+        "max-volume": 100,
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
         "format-source": "{volume}% ",
@@ -87,6 +90,12 @@
         },
         "on-click": "pavucontrol"
     },
+
+    "backlight": {
+         "device": "intel_backlight",
+         "format": "{icon} {percent}%",
+         "format-icons": [""]
+    },
         
     "battery": {
         "states": {
@@ -94,10 +103,10 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
@@ -119,5 +128,4 @@
       }
     }
 
-    
 }

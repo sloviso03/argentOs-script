@@ -85,14 +85,18 @@
 	# 3. ### Windows drawing ###
 	    default_border pixel 0
 	    default_floating_border pixel 0
-	    hide_edge_borders smart
-	    gaps inner 5
-	    gaps outer 5
+	    
+	    smart_gaps on
+	    smart_borders on
+	    
+	    gaps inner 4
+	    gaps outer 0
 
 	    #client.focused          #ffffff #000000 #ffffff #ffffff #ffffff
 	    #client.focused_inactive #555555 #000000 #888888 #555555 #555555
 	    #client.unfocused        #222222 #000000 #888888 #222222 #222222
-	    #client.urgent           #ffffff #000000 #ffffff #ffffff #ffffff
+	    #
+	    client.urgent           #ffffff #000000 #ffffff #ffffff #ffffff
 
 
 
