@@ -1,0 +1,11 @@
+{
+    "colorscheme": "simple",
+    "tabsize": 4,
+    "tabstospaces": true,
+    "autoclose": true,
+    "rmtrailingws": true,
+    "savecursor": true,
+    "cursorline": true,
+    "parseerrors": true,
+    "clipboard": "terminal"
+}

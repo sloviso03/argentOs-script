@@ -7,9 +7,11 @@
 	set $browser firefox
 	set $menu wmenu-run
 	set $bar waybar
+	set $file-manager ranger
 
 	exec_always autotiling
 	exec swaybg -i $HOME/argentOs-script/wallpaper.png -m fill
+	exec udiskie --smart-tray
 
 
 	# 1. ### Key bindings ###
@@ -17,6 +19,7 @@
 	    bindsym $mod+w exec $browser
 	    bindsym $mod+q kill
 	    bindsym $mod+d exec $menu
+	    bindsym $mod+e exec $term -e $file-manager
 
 	# Brightness & volume
 	    bindsym XF86MonBrightnessUp exec brightnessctl s +10%
