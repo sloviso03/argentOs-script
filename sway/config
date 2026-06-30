@@ -67,6 +67,10 @@
 	    # Toggle the current focus between tiling and floating mode
 	    bindsym $mod+Shift+space floating toggle
 
+		# Screenshot	    		
+		bindsym Print exec grim -g "$(slurp)" - | swappy -f -
+		bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
+
 
 	# 2. ### Input ###
 	    input * {
@@ -86,7 +90,7 @@
 	    default_border pixel 0
 	    default_floating_border pixel 0
 	    
-	    smart_gaps on
+	    smart_gaps off
 	    smart_borders on
 	    
 	    gaps inner 4
