@@ -12,6 +12,7 @@
 	exec_always autotiling
 	exec swaybg -i $HOME/argentOs-script/wallpaper.png -m fill
 	exec udiskie --smart-tray
+	exec_always kanshi
 
 
 	# 1. ### Key bindings ###

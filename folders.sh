@@ -34,6 +34,9 @@ cp -r fuzzel/* ~/.config/fuzzel/
 
 
 
+mkdir -p ~/.config/kanshi
+cp kanshi/config ~/.config/kanshi/config
+
 
 
 systemctl --user daemon-reload
