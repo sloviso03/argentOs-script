@@ -1,9 +1,16 @@
+[general]
+live_config_reload = true
+
 [window]
-decorations = "none"
-opacity = 0.90
+decorations = "None"
+opacity = 0.92
+startup_mode = "Windowed"
+dynamic_title = true
+padding.x = 20
+padding.y = 18
 
 [font]
-size = 11.0
+size = 12
 
 [font.normal]
 family = "JetBrains Mono"
@@ -13,36 +20,53 @@ style = "Regular"
 family = "JetBrains Mono"
 style = "Bold"
 
+[cursor]
+style = "Beam"
+blink_interval = 500
 
-[cursor.style]
-shape = "Beam"
-blinking = "On"
+[selection]
+save_to_clipboard = true
 
-# Color scheme
+[mouse]
+hide_when_typing = true
+
 [colors.primary]
 background = "#000000"
-foreground = "#f8f8f2"
+foreground = "#e8e8e8"
 
 [colors.cursor]
-text = "#282a36"
-cursor = "#f8f8f2"
+text = "#000000"
+cursor = "#ffffff"
+
+[colors.selection]
+text = "#ffffff"
+background = "#1a1a1a"
 
 [colors.normal]
-black = "#21222c"
-red = "#ff5555"
-green = "#50fa7b"
-yellow = "#f1fa8c"
-blue = "#bd93f9"
-magenta = "#ff79c6"
-cyan = "#8be9fd"
-white = "#f8f8f2"
+black = "#111111"
+red = "#d16969"
+green = "#98c379"
+yellow = "#d7ba7d"
+blue = "#61afef"
+magenta = "#c678dd"
+cyan = "#56b6c2"
+white = "#c8c8c8"
 
 [colors.bright]
-black = "#6272a4"
-red = "#ff6e6e"
-green = "#69ff94"
-yellow = "#ffffa5"
-blue = "#d6acff"
-magenta = "#ff92df"
-cyan = "#a4ffff"
+black = "#333333"
+red = "#e06c75"
+green = "#98c379"
+yellow = "#e5c07b"
+blue = "#61afef"
+magenta = "#c678dd"
+cyan = "#56b6c2"
 white = "#ffffff"
+
+[keyboard]
+bindings = [
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+  { key = "Plus", mods = "Control", action = "IncreaseFontSize" },
+  { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+  { key = "Key0", mods = "Control", action = "ResetFontSize" }
+]
