@@ -30,4 +30,3 @@ cp -r micro/* ~/.config/micro/
 
 systemctl --user daemon-reload
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
-systemctl --user enable --now power-profiles-daemon.service
