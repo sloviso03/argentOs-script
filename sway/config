@@ -5,7 +5,7 @@
 	set $mod Mod4
 	set $term alacritty
 	set $browser firefox
-	set $menu fuzzel
+	set $menu fuzzel --prompt="$USER: "
 	set $bar waybar
 	set $file-manager ranger
 
@@ -20,6 +20,8 @@
 	    bindsym $mod+q kill
 	    bindsym $mod+d exec $menu
 	    bindsym $mod+e exec $term -e $file-manager
+	    bindsym $mod+Tab workspace next_on_output
+	    bindsym $mod+Shift+Tab workspace prev_on_output
 
 	# Brightness & volume
 	    bindsym XF86MonBrightnessUp exec brightnessctl s +10%
