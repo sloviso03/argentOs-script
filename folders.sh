@@ -10,6 +10,8 @@ cp alacritty/* ~/.config/alacritty
 
 mkdir -p ~/.config/waybar
 cp waybar/config.jsonc ~/.config/waybar/config.jsonc
+cp waybar/power_menu.sh ~/.config/waybar/
+chmod +x ~/.config/waybar/power_menu.sh
 sed -i "s|\${SYSTEM_TIMEZONE}|$SYSTEM_TIMEZONE|g" ~/.config/waybar/config.jsonc
 cp waybar/style.css ~/.config/waybar/style.css
 

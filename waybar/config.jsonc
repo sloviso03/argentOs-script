@@ -1,25 +1,25 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 35, 
+    "height": 35,
     "margin-top": 4,
     "margin-left": 4,
     "margin-right": 4,
     "spacing": 10,
-    
+
     "modules-left": [
     	"custom/power",
-        "sway/workspaces"        
+        "sway/workspaces"
     ],
-    
+
     "modules-center": [
         "clock"
     ],
-    
+
     "modules-right": [
         "network",
         "pulseaudio",
-        "backlight",        
+        "backlight",
 		"battery",
         "power-profiles-daemon"
     ],
@@ -28,25 +28,18 @@
 
     "custom/power": {
         "format" : "⏻ ",
-   		"tooltip": false,
-   		"menu": "on-click",
-   		"menu-file": "/usr/share/waybar/custom_modules/power_menu.xml", // Menu file in resources folder
-   		"menu-actions": {
-   			"shutdown": "shutdown",
-   			"reboot": "reboot",
-   			"suspend": "systemctl suspend",
-   			"hibernate": "systemctl hibernate"
-    	}
+        "tooltip": false,
+        "on-click": "$HOME/.config/waybar/power_menu.sh"
     },
-        
+
     "sway/workspaces": {
          "disable-scroll": true,
          "all-outputs": true,
          "warp-on-scroll": false,
          "format": "{name}"
      },
-     
-    "clock": {                
+
+    "clock": {
     	"timezone": "${SYSTEM_TIMEZONE}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
 		"format":  "   {:%H:%M}",
@@ -64,7 +57,7 @@
     },
 
     "pulseaudio": {
-        
+
         "max-volume": 100,
         "format": "{icon} {volume}%",
         "format-bluetooth": "{volume}% {icon}",
@@ -89,7 +82,7 @@
          "format": "{icon} {percent}%",
          "format-icons": [""]
     },
-        
+
     "battery": {
         "states": {
             // "good": 95,
@@ -108,7 +101,7 @@
     "battery#bat2": {
         "bat": "BAT2"
     },
-    
+
     "power-profiles-daemon": {
       "format": "{icon}",
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
