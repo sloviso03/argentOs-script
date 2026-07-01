@@ -28,5 +28,13 @@ sudo update-alternatives --set editor /usr/bin/micro
 mkdir -p ~/.config/micro
 cp -r micro/* ~/.config/micro/
 
+
+mkdir -p ~/.config/fuzzel
+cp -r fuzzel/* ~/.config/fuzzel/
+
+
+
+
+
 systemctl --user daemon-reload
 systemctl --user enable --now pipewire pipewire-pulse wireplumber
