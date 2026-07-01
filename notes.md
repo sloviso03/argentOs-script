@@ -8,5 +8,9 @@
 
     - Paste content into https://github.com/settings/keys
 
+    - Setup your account
+        git config --global user.email "you@example.com"
+        git config --global user.name "Your Name"
+
     - Test your connection
         ssh -T git@github.com
