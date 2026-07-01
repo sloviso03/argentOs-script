@@ -5,7 +5,7 @@
 	set $mod Mod4
 	set $term alacritty
 	set $browser firefox
-	set $menu wmenu-run
+	set $menu fuzzel
 	set $bar waybar
 	set $file-manager ranger
 
@@ -70,7 +70,7 @@
 	    # Toggle the current focus between tiling and floating mode
 	    bindsym $mod+Shift+space floating toggle
 
-		# Screenshot	    		
+		# Screenshot
 		bindsym Print exec grim -g "$(slurp)" - | swappy -f -
 		bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
 
@@ -79,7 +79,7 @@
 	    input * {
 	        xkb_layout "latam"
 	    }
-	 
+
 	input "type:touchpad" {
 	    dwt enabled
 	    tap enabled
@@ -92,10 +92,10 @@
 	# 3. ### Windows drawing ###
 	    default_border pixel 0
 	    default_floating_border pixel 0
-	    
+
 	    smart_gaps off
 	    smart_borders on
-	    
+
 	    gaps inner 4
 	    gaps outer 0
 
