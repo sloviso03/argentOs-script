@@ -39,6 +39,12 @@ cp kanshi/config ~/.config/kanshi/config
 
 mkdir -p ~/.config/gtk-3.0
 cp gtk/gtk-3.0.css ~/.config/gtk-3.0/gtk.css
+cp gtk/settings.ini ~/.config/gtk-3.0/
+mkdir -p ~/.config/gtk-4.0
+cp gtk/gtk-3.0.css ~/.config/gtk-4.0/gtk.css
+cp gtk/settings.ini ~/.config/gtk-4.0/
+
+
 mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
 echo '<?xml version="1.0" encoding="UTF-8"?><channel name="xsettings" version="1.0"><property name="Net" type="empty"><property name="ThemeName" type="string" value="Adwaita-dark"/></property></channel>' > ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml
 xdg-mime default thunar.desktop inode/directory

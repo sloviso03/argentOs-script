@@ -7,8 +7,9 @@
 
 window#waybar {
     background-color: rgba(0, 0, 0, 0.85);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: #ffffff;        
+    color: #ffffff;
+    border: none;
+    border-radius: 18px;
     transition: all 0.3s ease;
 }
 
@@ -41,7 +42,7 @@ button:hover {
 
 #workspaces {
     margin: 4px 4px;
-    padding: 0 4px;    
+    padding: 0 4px;
     border-radius: 6px;
 }
 
@@ -59,11 +60,11 @@ button:hover {
     color: #ffffff;
 }
 
-#workspaces button.focused {    
+#workspaces button.focused {
     color: #ffffff;
 }
 
-#workspaces button.urgent {    
+#workspaces button.urgent {
     color: #ffffff;
 }
 
