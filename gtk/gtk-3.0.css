@@ -1,0 +1,101 @@
+@define-color theme_bg_color #0a0a0a;
+@define-color theme_fg_color #e0e0e0;
+@define-color theme_base_color #000000;
+@define-color theme_text_color #e0e0e0;
+@define-color theme_selected_bg_color #2a2a2a;
+@define-color theme_selected_fg_color #ffffff;
+@define-color border_color #222222;
+window, button, entry, treeview, iconview, headerbar, toolbar, label, menu, menuitem {
+    font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", sans-serif;
+    font-size: 10pt;
+}
+window,
+.view,
+treeview,
+iconview,
+.sidebar {
+    background-color: @theme_base_color;
+    color: @theme_text_color;
+}
+.sidebar {
+    border-right: 1px solid @border_color;
+}
+headerbar,
+toolbar {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+    border: none;
+    box-shadow: none;
+    border-bottom: 1px solid @border_color;
+}
+button {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+    border: 1px solid @border_color;
+    box-shadow: none;
+}
+button:hover {
+    background-color: #1a1a1a;
+}
+button:active,
+button:checked {
+    background-color: #2a2a2a;
+}
+button:disabled {
+    color: #555555;
+}
+entry {
+    background-color: @theme_base_color;
+    color: @theme_text_color;
+    border: 1px solid @border_color;
+    box-shadow: none;
+}
+entry:focus {
+    border-color: #555555;
+}
+treeview:selected,
+iconview:selected,
+.view:selected {
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
+}
+treeview:hover,
+iconview:hover {
+    background-color: #151515;
+}
+scrollbar {
+    background-color: @theme_bg_color;
+}
+scrollbar slider {
+    background-color: #333333;
+    border-radius: 4px;
+}
+scrollbar slider:hover {
+    background-color: #4a4a4a;
+}
+menu,
+.menu,
+.context-menu,
+popover,
+popover.background,
+GtkMenu {
+    background-color: @theme_base_color;
+    color: @theme_text_color;
+    border: 1px solid @border_color;
+    box-shadow: none;
+}
+menuitem,
+.menuitem {
+    background-color: transparent;
+    color: @theme_text_color;
+}
+menuitem:hover,
+.menuitem:hover {
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
+}
+menuitem separator,
+separator {
+    background-color: @border_color;
+    min-height: 1px;
+}

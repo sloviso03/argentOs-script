@@ -7,7 +7,7 @@
 	set $browser firefox
 	set $menu fuzzel --prompt="$USER: "
 	set $bar waybar
-	set $file-manager ranger
+	set $file-manager thunar
 
 	exec_always autotiling
 	exec swaybg -i $HOME/argentOs-script/wallpaper.png -m fill
@@ -20,7 +20,7 @@
 	    bindsym $mod+w exec $browser
 	    bindsym $mod+q kill
 	    bindsym $mod+d exec $menu
-	    bindsym $mod+e exec $term -e $file-manager
+	    bindsym $mod+e exec $file-manager
 	    bindsym $mod+Tab workspace next_on_output
 	    bindsym $mod+Shift+Tab workspace prev_on_output
 
@@ -83,12 +83,12 @@
 	        xkb_layout "latam"
 	    }
 
-	input "type:touchpad" {
-	    dwt enabled
-	    tap enabled
-	    natural_scroll enabled
-	    middle_emulation enabled
-	}
+    	input "type:touchpad" {
+    	    dwt enabled
+    	    tap enabled
+    	    natural_scroll enabled
+    	    middle_emulation enabled
+    	}
 
 
 
@@ -108,9 +108,10 @@
 	    #
 	    client.urgent           #ffffff #000000 #ffffff #ffffff #ffffff
 
+        for_window [app_id="thunar"] opacity 0.9
 
 
-   # 4. ### Bar ###
-   bar {
-   	swaybar_command $bar
-   }
+    # 4. ### Bar ###
+    bar {
+        swaybar_command $bar
+    }
