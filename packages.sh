@@ -1,2 +1,33 @@
 #!/usr/bin/env bash
-sudo apt install sway firefox-esr fonts-jetbrains-mono waybar alacritty grim fzf slurp swappy wl-clipboard thunar xfce4-settings udiskie udisks2 micro fastfetch brightnessctl pulseaudio-utils power-profiles-daemon pavucontrol pasystray autotiling pipewire-audio-client-libraries wireplumber libpulse0 xdg-desktop-portal xdg-desktop-portal-wlr fuzzel wdisplays kanshi
+sudo dnf install -y \
+    niri \
+    firefox \
+    jetbrains-mono-fonts \
+    waybar \
+    alacritty \
+    grim \
+    fzf \
+    slurp \
+    swappy \
+    wl-clipboard \
+    thunar \
+    xfce4-settings \
+    udiskie \
+    udisks2 \
+    micro \
+    fastfetch \
+    brightnessctl \
+    pulseaudio-utils \
+    power-profiles-daemon \
+    pavucontrol \
+    pasystray \
+    pipewire \
+    pipewire-pulseaudio \
+    wireplumber \
+    xdg-desktop-portal \
+    xdg-desktop-portal-gnome \
+    fuzzel \
+    wdisplays \
+    kanshi \
+    python3-pip \
+    swaybg
