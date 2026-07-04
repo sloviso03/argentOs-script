@@ -13,11 +13,9 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
-
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -59,13 +57,23 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-# Micro as default editor
 export EDITOR="micro"
 export VISUAL="micro"
 
+export XCURSOR_THEME="Bibata-Modern-Ice"
+export XCURSOR_SIZE=24
 
-# FZF integration
-if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
-  source /usr/share/doc/fzf/examples/key-bindings.bash
+if command -v fzf >/dev/null 2>&1; then
+    if [ -f /usr/share/fzf/shell/key-bindings.bash ]; then
+        source /usr/share/fzf/shell/key-bindings.bash
+    elif [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
+        source /usr/share/doc/fzf/examples/key-bindings.bash
+    else
+        eval "$(fzf --bash 2>/dev/null)"
+    fi
+    if [ -f /usr/share/fzf/shell/completion.bash ]; then
+        source /usr/share/fzf/shell/completion.bash
+    elif [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
+        source /usr/share/doc/fzf/examples/completion.bash
+    fi
 fi

@@ -9,7 +9,7 @@
 
     "modules-left": [
     	"custom/power",
-        "sway/workspaces"
+        "niri/workspaces"
     ],
 
     "modules-center": [
@@ -32,11 +32,8 @@
         "on-click": "$HOME/.config/waybar/power_menu.sh"
     },
 
-    "sway/workspaces": {
-         "disable-scroll": true,
-         "all-outputs": true,
-         "warp-on-scroll": false,
-         "format": "{name}"
+    "niri/workspaces": {
+         "format": "{index}"
      },
 
     "clock": {

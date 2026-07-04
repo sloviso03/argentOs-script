@@ -1,3 +1,10 @@
+spawn-at-startup "waybar"
+spawn-at-startup "sh" "-c" "swaybg -i ${WALLPAPER_PATH} -m fill"
+spawn-at-startup "udiskie" "--smart-tray"
+spawn-at-startup "kanshi"
+
+prefer-no-csd
+
 input {
     keyboard {
         xkb {
@@ -15,46 +22,52 @@ output "eDP-1" {
     scale 1.0
 }
 
-layout {
-    gaps 4
-    center-focused-column "never"
-    default-column-width { proportion 0.5; }
-
-    // De esta forma se desactivan correctamente en KDL
-    focus-ring { off; }
-    border { off; }
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 24
 }
-
-// Corrección de las comillas en los comandos de inicio
-spawn-at-startup "waybar"
-spawn-at-startup "swaybg" "-i" "/home/sloviso03/argentOs-script/wallpaper.png" "-m" "fill"
-spawn-at-startup "udiskie" "--smart-tray"
-spawn-at-startup "kanshi"
 
 binds {
     Mod+Return { spawn "alacritty"; }
     Mod+W { spawn "firefox"; }
     Mod+Q { close-window; }
-    Mod+D { spawn "fuzzel" "--prompt=sloviso03: "; }
+    Mod+D { spawn "fuzzel" "--prompt=argentOs: "; }
     Mod+E { spawn "thunar"; }
-    Mod+F { fullscreen-window; }
+    Mod+L { spawn "swaylock" "-f" "-c" "000000"; }
+    Mod+O { toggle-overview; }
+
+    Mod+F { switch-preset-column-width; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+C { center-column; }
+    Mod+M { maximize-column; }
+    Mod+Space { toggle-window-floating; }
+    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
 
     Mod+Tab { focus-column-right; }
     Mod+Shift+Tab { focus-column-left; }
-
-    XF86MonBrightnessUp { spawn "brightnessctl" "s" "+10%"; }
-    XF86MonBrightnessDown { spawn "brightnessctl" "s" "10%-"; }
-    XF86AudioRaiseVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+10%"; }
-    XF86AudioLowerVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-10%"; }
-    XF86AudioMute { spawn "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"; }
-
-    Mod+Left  { focus-column-left; }
+    Mod+Left { focus-column-left; }
     Mod+Right { focus-column-right; }
-    Mod+Down  { focus-window-or-workspace-down; }
-    Mod+Up    { focus-window-or-workspace-up; }
-
-    Mod+Shift+Left  { move-column-left; }
+    Mod+Down { focus-window-or-workspace-down; }
+    Mod+Up { focus-window-or-workspace-up; }
+    Mod+Shift+Left { move-column-left; }
     Mod+Shift+Right { move-column-right; }
+
+    Mod+Comma { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+    Mod+Shift+Comma { consume-or-expel-window-left; }
+    Mod+Shift+Period { consume-or-expel-window-right; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Plus { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Plus { set-window-height "+10%"; }
+
+    Mod+Page_Down { focus-workspace-down; }
+    Mod+Page_Up { focus-workspace-up; }
+    Mod+Shift+Page_Down { move-column-to-workspace-down; }
+    Mod+Shift+Page_Up { move-column-to-workspace-up; }
+    Mod+Ctrl+Left { move-column-to-monitor-left; }
+    Mod+Ctrl+Right { move-column-to-monitor-right; }
 
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
@@ -66,7 +79,6 @@ binds {
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
     Mod+0 { focus-workspace 10; }
-
     Mod+Shift+1 { move-window-to-workspace 1; }
     Mod+Shift+2 { move-window-to-workspace 2; }
     Mod+Shift+3 { move-window-to-workspace 3; }
@@ -78,13 +90,112 @@ binds {
     Mod+Shift+9 { move-window-to-workspace 9; }
     Mod+Shift+0 { move-window-to-workspace 10; }
 
+    XF86MonBrightnessUp { spawn "brightnessctl" "s" "+10%"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "s" "10%-"; }
+    XF86AudioRaiseVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+10%"; }
+    XF86AudioLowerVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-10%"; }
+    XF86AudioMute { spawn "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"; }
+
     Print { spawn "sh" "-c" "grim -g \"$(slurp)\" - | swappy -f -"; }
     Mod+Shift+S { spawn "sh" "-c" "grim -g \"$(slurp)\" - | swappy -f -"; }
+    Mod+Print { screenshot-screen; }
+    Ctrl+Print { screenshot-window; }
 
     Mod+Shift+R { spawn "niri" "msg" "action" "reload-config"; }
+    Mod+Shift+E { spawn "sh" "-c" "~/.config/waybar/power_menu.sh"; }
+    Mod+Shift+Q { quit; }
+}
+
+layout {
+    gaps 8
+    center-focused-column "never"
+    preset-column-widths {
+        proportion 0.5
+        proportion 1.0
+    }
+    default-column-width { proportion 0.5; }
+    focus-ring {
+        width 2
+        active-color "#ffffff66"
+        inactive-color "#44476a30"
+    }
+    border {
+        off
+    }
+    shadow {
+        on
+        softness 30
+        spread 4
+        offset x=0 y=4
+        color "#00000080"
+    }
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+}
+
+blur {
+    on
+    passes 3
+    offset 3.0
+    noise 0.02
+    saturation 1.5
+}
+
+animations {
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.7 stiffness=700 epsilon=0.0001
+    }
+    workspace-switch {
+        spring damping-ratio=0.75 stiffness=900 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.6 stiffness=650 epsilon=0.0001
+    }
 }
 
 window-rule {
-    match app-id="thunar"
+    geometry-corner-radius 16
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id="(?i)^thunar$"
     opacity 0.9
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="(?i)^alacritty$"
+    background-effect {
+        blur true
+    }
+}
+
+layer-rule {
+    match namespace="^waybar$"
+    background-effect {
+        blur true
+    }
+}
+
+
+layer-rule {
+    match namespace="^launcher$"
+    background-effect {
+        blur true
+    }
 }

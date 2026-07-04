@@ -4,15 +4,13 @@
   "logo": {
     "source": "gnu",
     "color": {
-      "1": "green",
-      "2": "white"
+      "1": "green"
     }
   },
 
   "display": {
     "color": {
-      "keys": "white",
-      "title": "green",
+      "keys": "green",
       "output": "white"
     },
     "separator": " "
@@ -21,92 +19,83 @@
   "modules": [
     {
       "type": "custom",
-      "format": "\u001b[90m┌─ Hardware ──────────┐"
+      "format": "\u001b[0m┌─ Hardware ──────────┐"
     },
     {
       "type": "cpu",
       "key": "CPU",
       "format": "{2}",
-      "keyColor": "green",
       "showPeCoreCount": true
     },
     {
       "type": "gpu",
       "key": "GPU",
-      "format": "{1}",
-      "keyColor": "green"
+      "format": "{1}"
     },
     {
       "type": "memory",
       "key": "RAM",
-      "format": "{2}",
-      "keyColor": "green"
+      "format": "{2}"
     },
     {
       "type": "disk",
       "key": "DISK",
-      "format": "{1}",
-      "keyColor": "green"
+      "format": "{1}"
     },
 
     {
       "type": "custom",
-      "format": "\u001b[90m└─────────────────────┘"
+      "format": "\u001b[0m└─────────────────────┘"
     },
 
     "break",
 
     {
       "type": "custom",
-      "format": "\u001b[90m┌─ Software ──────────┐"
+      "format": "\u001b[0m┌─ Software ──────────┐"
     },
 
     {
       "type": "os",
       "key": "OS",
-      "format": "{2}",
-      "keyColor": "green"
+      "format": "{2}"
     },
     {
       "type": "kernel",
       "key": "KERNEL",
-      "format": "{1}",
-      "keyColor": "green"
+      "format": "{1}"
     },
     {
       "type": "shell",
-      "key": "SHELL",
-      "keyColor": "green"
+      "key": "SHELL"
     },
 
     {
       "type": "custom",
-      "format": "\u001b[90m└─────────────────────┘"
+      "format": "\u001b[0m└─────────────────────┘"
     },
 
     "break",
 
     {
       "type": "custom",
-      "format": "\u001b[90m┌─ Environment ───────┐"
+      "format": "\u001b[0m┌─ Environment ───────┐"
     },
 
     {
       "type": "wm",
       "key": "WM",
-      "format": "{1}",
-      "keyColor": "green"
+      "format": "{1}"
     },
     {
       "type": "terminal",
       "key": "TERMINAL",
-      "format": "{1}",
-      "keyColor": "green"
+      "format": "{1}"
     },
 
     {
       "type": "custom",
-      "format": "\u001b[90m└──────argentOs───────┘"
+      "format": "\u001b[0m└──────argentOs───────┘"
     },
 
     "break"

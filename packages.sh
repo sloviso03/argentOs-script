@@ -30,4 +30,8 @@ sudo dnf install -y \
     wdisplays \
     kanshi \
     python3-pip \
-    swaybg
+    swaylock \
+    swaybg \
+    curl \
+    xz \
+    glib2
