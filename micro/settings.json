@@ -1,5 +1,5 @@
 {
-    "colorscheme": "simple",
+    "colorscheme": "dracula",
     "tabsize": 4,
     "tabstospaces": true,
     "autoclose": true,
@@ -7,5 +7,14 @@
     "savecursor": true,
     "cursorline": true,
     "parseerrors": true,
-    "clipboard": "terminal"
+    "clipboard": "terminal",
+    "mouse": true,
+    "softwrap": true,
+    "scrollbar": true,
+    "diffgutter": true,
+    "ruler": true,
+    "statusline": true,
+    "matchbrace": true,
+    "autosave": 0,
+    "eofnewline": true
 }

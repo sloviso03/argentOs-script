@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 sudo dnf install -y \
     niri \
+    xwayland-satellite \
     firefox \
     jetbrains-mono-fonts \
     waybar \
@@ -20,12 +21,12 @@ sudo dnf install -y \
     pulseaudio-utils \
     power-profiles-daemon \
     pavucontrol \
-    pasystray \
     pipewire \
     pipewire-pulseaudio \
     wireplumber \
     xdg-desktop-portal \
     xdg-desktop-portal-gnome \
+    xdg-desktop-portal-gtk \
     fuzzel \
     wdisplays \
     kanshi \
