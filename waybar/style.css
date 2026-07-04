@@ -13,14 +13,6 @@ window#waybar {
     transition: all 0.3s ease;
 }
 
-window#waybar > box {
-    border-radius: 18px;
-}
-
-#waybar {
-    background: transparent;
-}
-
 window#waybar.hidden {
     opacity: 0.2;
 }
