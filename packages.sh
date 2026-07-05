@@ -35,4 +35,5 @@ sudo dnf install -y \
     swaybg \
     curl \
     xz \
-    glib2
+    glib2 \
+    okular

@@ -13,3 +13,14 @@ source folders.sh
 
 echo -e "${G}Instalando el cursor...${RESET}";
 source cursor.sh
+
+echo -e "${G}Instalación base completada.${RESET}"
+
+
+read -r -p "¿Te gustaría pasar al menú de lenguajes de programación? (Y/N) " doit
+
+case "${doit}" in
+    [Yy]) source options.sh
+    ;; *)
+    echo -e "${G}Saliendo sin abrir el menú de lenguajes.${RESET}" ;;
+esac
