@@ -17,10 +17,10 @@
 
 
 # Install fzf with CTRL+R keybind (argentOs already has it installed)
-    - sudo apt install fzf
+    - sudo dnf install fzf
 
     - nano ~/.bashrc
-        source /usr/share/doc/fzf/examples/key-bindings.bash
-
-    - source ~/.bashrc
+    - Write this at the end -> '  source /usr/share/fzf/shell/key-bindings.bash  '
+    - Add alias for clear -> '  alias fzf-clear='history -c && history -w && clear'  '
+    - Reload with source ~/.bashrc
 
