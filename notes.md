@@ -14,3 +14,13 @@
 
     - Test your connection
         ssh -T git@github.com
+
+
+# Install fzf with CTRL+R keybind (argentOs already has it installed)
+    - sudo apt install fzf
+
+    - nano ~/.bashrc
+        source /usr/share/doc/fzf/examples/key-bindings.bash
+
+    - source ~/.bashrc
+
