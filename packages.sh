@@ -4,7 +4,6 @@ sudo dnf install -y \
     xwayland-satellite \
     firefox \
     jetbrains-mono-fonts \
-    waybar \
     alacritty \
     grim \
     fzf \
@@ -27,7 +26,6 @@ sudo dnf install -y \
     xdg-desktop-portal \
     xdg-desktop-portal-gnome \
     xdg-desktop-portal-gtk \
-    fuzzel \
     wdisplays \
     kanshi \
     python3-pip \
@@ -36,4 +34,5 @@ sudo dnf install -y \
     curl \
     xz \
     glib2 \
-    okular
+    okular \
+    noctalia

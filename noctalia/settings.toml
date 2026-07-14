@@ -1,0 +1,61 @@
+[bar.default]
+background_opacity = 0.8399999812245369
+capsule = true
+center = [ "launcher", "clock", "wallpaper" ]
+end = [ "clipboard", "volume", "battery", "control-center" ]
+shadow = false
+start = [ "session", "workspaces" ]
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 683.0
+    cy = 649.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+[shell]
+settings_show_advanced = true
+
+    [shell.panel]
+    transparency_mode = "glass"
+
+[theme]
+builtin = "Dracula"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "niri" ]
+
+[wallpaper]
+directory = "/home/santiagolovisotto/argentOs-script"
+
+    [wallpaper.default]
+    path = "/home/santiagolovisotto/argentOs-script/wallpaper.png"
+
+    [wallpaper.last]
+    path = "/home/santiagolovisotto/argentOs-script/wallpaper.png"
+
+[widget.launcher]
+glyph = "rocket"

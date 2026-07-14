@@ -10,12 +10,6 @@ sed -i "s|\${WALLPAPER_PATH}|$HOME/.config/niri/wallpaper.png|g" ~/.config/niri/
 mkdir -p ~/.config/alacritty
 cp alacritty/* ~/.config/alacritty
 
-mkdir -p ~/.config/waybar
-cp waybar/config.jsonc ~/.config/waybar/config.jsonc
-cp waybar/power_menu.sh ~/.config/waybar/
-chmod +x ~/.config/waybar/power_menu.sh
-sed -i "s|\${SYSTEM_TIMEZONE}|$SYSTEM_TIMEZONE|g" ~/.config/waybar/config.jsonc
-cp waybar/style.css ~/.config/waybar/style.css
 
 mkdir -p ~/.config/fastfetch
 cp fastfetch/config.jsonc ~/.config/fastfetch/config.jsonc
@@ -32,6 +26,14 @@ cp -r fuzzel/* ~/.config/fuzzel/
 mkdir -p ~/.config/kanshi
 cp kanshi/config ~/.config/kanshi/config
 
+
+# Pasamos config de noctalia
+# cp ~/.local/state/noctalia/settings.toml ~/argentOs-script/noctalia/settings.toml
+mkdir -p ~/.local/state/noctalia
+cp noctalia/settings.toml ~/.local/state/noctalia/settings.toml
+
+
+
 mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
 cat > ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml << 'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -41,6 +43,10 @@ cat > ~/.config/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml << 'EOF'
 </property>
 </channel>
 EOF
+
+
+
+
 
 mkdir -p ~/.config/xdg-desktop-portal
 cat > ~/.config/xdg-desktop-portal/niri-portals.conf << 'EOF'
