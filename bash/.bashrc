@@ -69,3 +69,9 @@ export VISUAL="micro"
 if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
   source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+export MOZ_ENABLE_WAYLAND=1
+export PATH=$HOME/.local/bin:$PATH
+eval "$($HOME/.local/bin/mise activate bash)"
+

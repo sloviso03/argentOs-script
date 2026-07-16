@@ -1,129 +1,108 @@
-	include /etc/sway/config-vars.d/*
-	include /etc/sway/config.d/*
+# Configuración de variables del sistema
+include /etc/sway/config-vars.d/*
+include /etc/sway/config.d/*
 
-	# 0. ### Variables & autostart ###
-	set $mod Mod4
-	set $term alacritty
-	set $browser firefox
-	seat seat0 xcursor_theme Bibata-Modern-Ice 24
+# 0. Variables, Autostart y Cursor
+set $mod Mod4
+set $term foot
+set $file-explorer dolphin
+set $browser librewolf
 
-	exec_always autotiling
-	exec noctalia
-	exec udiskie --smart-tray
-	exec bluetoothctl power on
-	exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
-	exec_always dconf write /org/gnome/desktop/interface/cursor-theme "'Bibata-Modern-Ice'"
+seat seat0 xcursor_theme Bibata-Modern-Ice 24
+exec_always {
+    gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
+    gsettings set org.gnome.desktop.interface cursor-size 24
+    hash dbus-update-activation-environment 2>/dev/null && \
+    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+}
 
+exec_always autotiling
+exec noctalia
+exec nm-applet --indicator
+exec udiskie --smart-tray
+exec bluetoothctl power on
+exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 
-	# 1. ### Key bindings ###
-	    bindsym $mod+Return exec $term
-	    bindsym $mod+w exec $browser
-	    bindsym $mod+q kill
-	    bindsym $mod+Tab workspace next_on_output
-	    bindsym $mod+Shift+Tab workspace prev_on_output
+# 1. Key bindings
+bindsym $mod+Return exec $term
+bindsym $mod+w exec $browser
+bindsym $mod+q kill
+bindsym $mod+e exec $file-explorer
+bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Shift+Tab workspace prev_on_output
 
-        # Noctalia
-        set $ipc noctalia msg
-        bindsym $mod+space exec $ipc panel-toggle launcher
-        bindsym $mod+s exec $ipc panel-toggle control-center
-        bindsym $mod+comma exec $ipc settings-toggle
-        bindsym --locked XF86AudioRaiseVolume exec $ipc volume-up
-        bindsym --locked XF86AudioLowerVolume exec $ipc volume-down
-        bindsym --locked XF86AudioMute exec $ipc volume-mute
-        bindsym --locked XF86MonBrightnessUp exec $ipc brightness-up
-        bindsym --locked XF86MonBrightnessDown exec $ipc brightness-down
+# Noctalia IPC
+set $ipc noctalia msg
+bindsym $mod+space exec $ipc panel-toggle launcher
+bindsym $mod+s exec $ipc panel-toggle control-center
+bindsym $mod+comma exec $ipc settings-toggle
+bindsym --locked XF86AudioRaiseVolume exec $ipc volume-up
+bindsym --locked XF86AudioLowerVolume exec $ipc volume-down
+bindsym --locked XF86AudioMute exec $ipc volume-mute
+bindsym --locked XF86MonBrightnessUp exec $ipc brightness-up
+bindsym --locked XF86MonBrightnessDown exec $ipc brightness-down
 
+# Manipulacion de ventanas
+floating_modifier $mod normal
+bindsym $mod+Shift+r reload
 
-	# Brightness & volume
-	  #  bindsym XF86MonBrightnessUp exec brightnessctl s +10%
-	  #  bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
-	  #  bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
-	  #  bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
-	  #  bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# Navegacion
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-	    # Drag floating windows by holding down $mod and left mouse button.
-	    floating_modifier $mod normal
+# Workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
 
-	    # Reload the configuration file
-	    bindsym $mod+Shift+r reload
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
-	    # Move your focus around
-	    bindsym $mod+Left focus left
-	    bindsym $mod+Down focus down
-	    bindsym $mod+Up focus up
-	    bindsym $mod+Right focus right
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
 
-	    # Switch to workspace
-	    bindsym $mod+1 workspace number 1
-	    bindsym $mod+2 workspace number 2
-	    bindsym $mod+3 workspace number 3
-	    bindsym $mod+4 workspace number 4
-	    bindsym $mod+5 workspace number 5
-	    bindsym $mod+6 workspace number 6
-	    bindsym $mod+7 workspace number 7
-	    bindsym $mod+8 workspace number 8
-	    bindsym $mod+9 workspace number 9
-	    bindsym $mod+0 workspace number 10
+# 2. Input
+input * {
+    xkb_layout "latam"
+}
 
-	    # Move focused container to workspace
-	    bindsym $mod+Shift+1 move container to workspace number 1
-	    bindsym $mod+Shift+2 move container to workspace number 2
-	    bindsym $mod+Shift+3 move container to workspace number 3
-	    bindsym $mod+Shift+4 move container to workspace number 4
-	    bindsym $mod+Shift+5 move container to workspace number 5
-	    bindsym $mod+Shift+6 move container to workspace number 6
-	    bindsym $mod+Shift+7 move container to workspace number 7
-	    bindsym $mod+Shift+8 move container to workspace number 8
-	    bindsym $mod+Shift+9 move container to workspace number 9
-	    bindsym $mod+Shift+0 move container to workspace number 10
+input "type:touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
 
-	    # Make the current focus fullscreen
-	    bindsym $mod+f fullscreen
+input "type:trackpoint" {
+    pointer_accel -0.5
+    accel_profile flat
+}
 
-	    # Toggle the current focus between tiling and floating mode
-	    bindsym $mod+Shift+space floating toggle
+default_border pixel 2
+default_floating_border pixel 2
+smart_gaps off
+smart_borders off
+gaps inner 4
+gaps outer 4
 
-		# Screenshot
-	#	bindsym Print exec grim -g "$(slurp)" - | swappy -f -
-	#	bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
-
-
-	# 2. ### Input ###
-	    input * {
-	        xkb_layout "latam"
-	    }
-
-    	input "type:touchpad" {
-    	    dwt enabled
-    	    tap enabled
-    	    natural_scroll enabled
-    	    middle_emulation enabled
-    	}
-
-        input "type:trackpoint" {
-            pointer_accel -0.5
-            accel_profile flat
-        }
-
-
-	# 3. ### Windows drawing ###
-	    default_border pixel 0
-	    default_floating_border pixel 0
-
-	    smart_gaps off
-	    smart_borders on
-
-	    gaps inner 4
-	    gaps outer 0
-
-	    #client.focused          #ffffff #000000 #ffffff #ffffff #ffffff
-	    #client.focused_inactive #555555 #000000 #888888 #555555 #555555
-	    #client.unfocused        #222222 #000000 #888888 #222222 #222222
-	    #
-	    client.urgent           #ffffff #000000 #ffffff #ffffff #ffffff
-
-#        for_window [app_id="thunar"] opacity 0.9
-
-
-    # 4. ### Bar ###
-
+client.focused           #8a8a8a #1a1a1a #e0e0e0 #444444    #8a8a8a
+client.focused_inactive  #3a3a3a #141414 #a0a0a0 #222222    #3a3a3a
+client.unfocused         #222222 #141414 #707070 #141414    #222222
+client.urgent            #e05f65 #141414 #e0e0e0 #e05f65    #e05f65

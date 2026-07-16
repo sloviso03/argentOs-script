@@ -1,6 +1,6 @@
 [bar.default]
-background_opacity = 0.6
-capsule_opacity = 0.41
+background_opacity = 0.9
+capsule_opacity = 0.5
 center = [ "launcher", "clock", "wallpaper" ]
 end = [ "clipboard", "volume", "battery", "notifications", "control-center" ]
 margin_edge = 4
@@ -9,29 +9,61 @@ position = "bottom"
 start = [ "workspaces" ]
 widget_spacing = 16
 
+[control_center]
+hidden_tabs = [ "weather", "calendar" ]
+
+[osd]
+position = "top_right"
+
+[shell]
+font_family = "JetBrains Mono"
+polkit_agent = true
+
+    [shell.animation]
+    speed = 1.3500000201165676
+
+    [shell.launcher]
+    compact = true
+
+    [shell.panel]
+    clipboard_position = "bottom_right"
+    control_center_placement = "floating"
+    control_center_position = "bottom_right"
+    session_placement = "floating"
+    session_position = "bottom_right"
+    wallpaper_placement = "floating"
+
 [theme]
 builtin = "Kanagawa"
 community_palette = "Matecito"
 mode = "dark"
-source = "community"
+source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
 [theme.templates]
-builtin_ids = [ "alacritty", "btop", "gtk3", "gtk4", "sway" ]
-community_ids = [ "pywalfox" ]
+builtin_ids = [ "alacritty", "btop", "gtk3", "gtk4", "kcolorscheme","sway", "qt5", "qt6" ]
+community_ids = [ "papirus-icons" ]
+enable_community_templates = true
 
+[wallpaper]
+directory = "/usr/share/backgrounds/argentOs"
+transition_duration = 500
+transition_on_startup = true
 
 [wallpaper.default]
-path = "/usr/share/backgrounds/argentOs/wallhaven-138kjg.png"
+path = "/usr/share/backgrounds/argentOs/default.png"
 
 [wallpaper.last]
-path = "/usr/share/backgrounds/argentOs/wallhaven-138kjg.png"
+path = "/usr/share/backgrounds/argentOs/default.png"
 
 [wallpaper.monitors.eDP-1]
-path = "/usr/share/backgrounds/argentOs/wallhaven-138kjg.png"
+path = "/usr/share/backgrounds/argentOs/default.png"
+
+[weather]
+enabled = false
 
 [widget.clock]
-format = "{:%H:%M, %a, %b %d}"
+format = "{:%H:%M}"
 
 [widget.launcher]
 glyph = "rocket"

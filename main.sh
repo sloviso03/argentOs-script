@@ -9,7 +9,7 @@ echo -e "${B}ArgentOs-script${RESET}";
 
 echo -e "${G}Instalando todas las dependencias...${RESET}";
 source packages.sh
-source noctalia.sh
+source ./noctalia/noctalia.sh
 
 echo -e "${G}Instalando las configuraciones...${RESET}";
 source folders.sh
@@ -19,6 +19,7 @@ source cursor.sh
 
 echo -e "${G}Instalación base completada.${RESET}"
 
+mise doctor
 
 read -r -p "¿Te gustaría pasar al menú de lenguajes de programación? (Y/N) " doit
 
