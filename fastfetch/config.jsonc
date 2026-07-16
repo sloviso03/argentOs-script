@@ -1,99 +1,114 @@
-  {
+ {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
 
-
-
   "logo": {
-    "source": "gnu",
+    "source": "debian",
     "color": {
-      "1": "green"
+      "1": "green",
+      "2": "white"
     }
   },
 
-
   "display": {
     "color": {
-      "keys": "green",
+      "keys": "white",
+      "title": "green",
       "output": "white"
     },
-
     "separator": " "
-
   },
 
-
   "modules": [
-    "break",
-    "break",
     {
       "type": "custom",
-      "format": "\u001b[0m┌─ Hardware"
+      "format": "\u001b[90m┌─ Hardware ──────────┐"
     },
     {
       "type": "cpu",
       "key": "CPU",
+      "format": "{2}",
+      "keyColor": "green",
       "showPeCoreCount": true
     },
     {
       "type": "gpu",
       "key": "GPU",
+      "format": "{1}",
+      "keyColor": "green"
     },
     {
       "type": "memory",
-      "key": "RAM"
+      "key": "RAM",
+      "format": "{2}",
+      "keyColor": "green"
     },
     {
       "type": "disk",
       "key": "DISK",
+      "format": "{1}",
+      "keyColor": "green"
+    },
+
+    {
+      "type": "custom",
+      "format": "\u001b[90m└─────────────────────┘"
     },
 
     "break",
 
     {
       "type": "custom",
-      "format": "\u001b[0m┌─ Software"
+      "format": "\u001b[90m┌─ Software ──────────┐"
     },
+
     {
       "type": "os",
       "key": "OS",
-      "format": "{2}"
+      "format": "{2}",
+      "keyColor": "green"
     },
     {
       "type": "kernel",
-      "key": "KERNEL"
+      "key": "KERNEL",
+      "format": "{1}",
+      "keyColor": "green"
     },
     {
       "type": "shell",
-      "key": "SHELL"
+      "key": "SHELL",
+      "keyColor": "green"
+    },
+
+    {
+      "type": "custom",
+      "format": "\u001b[90m└─────────────────────┘"
     },
 
     "break",
 
     {
       "type": "custom",
-      "format": "\u001b[0m┌─ Environment"
+      "format": "\u001b[90m┌─ Environment ───────┐"
     },
+
     {
       "type": "wm",
       "key": "WM",
-      "format": "{1}"
+      "format": "{1}",
+      "keyColor": "green"
     },
     {
       "type": "terminal",
       "key": "TERMINAL",
-      "format": "{1}"
+      "format": "{1}",
+      "keyColor": "green"
     },
-
-    "break",
 
     {
       "type": "custom",
-      "format": "\u001b[0m «« argentOs »»"
+      "format": "\u001b[90m└──────argentOs───────┘"
     },
 
-    "break",
-    "break",
     "break"
   ]
-
 }

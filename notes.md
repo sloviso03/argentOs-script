@@ -23,4 +23,3 @@
     - Write this at the end -> '  source /usr/share/fzf/shell/key-bindings.bash  '
     - Add alias for clear -> '  alias fzf-clear='history -c && history -w && clear'  '
     - Reload with source ~/.bashrc
-

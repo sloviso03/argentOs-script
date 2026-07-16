@@ -1,38 +1,15 @@
 #!/usr/bin/env bash
-sudo dnf install -y \
-    niri \
-    xwayland-satellite \
-    firefox \
-    jetbrains-mono-fonts \
-    alacritty \
-    grim \
-    fzf \
-    slurp \
-    swappy \
-    wl-clipboard \
-    thunar \
-    xfce4-settings \
-    udiskie \
-    udisks2 \
-    micro \
-    fastfetch \
-    brightnessctl \
-    pulseaudio-utils \
-    power-profiles-daemon \
-    pavucontrol \
-    pipewire \
-    pipewire-pulseaudio \
-    wireplumber \
-    xdg-desktop-portal \
-    xdg-desktop-portal-gnome \
-    xdg-desktop-portal-gtk \
-    wdisplays \
-    kanshi \
-    python3-pip \
-    swaylock \
-    swaybg \
-    curl \
-    xz \
-    glib2 \
-    okular \
-    noctalia
+
+sudo apt update
+
+sudo apt install -y \
+  sway firefox-esr autotiling fonts-jetbrains-mono alacritty fzf micro fastfetch \
+  network-manager bluez bluez-tools blueman \
+  power-profiles-daemon upower \
+  pipewire-audio wireplumber pipewire-pulse pavucontrol \
+  grim slurp wl-clipboard brightnessctl dolphin \
+  xdg-desktop-portal-wlr polkit-kde-agent-1 \
+  libwebp7 librsvg2-common
+
+
+sudo systemctl enable --now NetworkManager
