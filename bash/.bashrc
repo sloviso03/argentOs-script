@@ -75,3 +75,15 @@ export MOZ_ENABLE_WAYLAND=1
 export PATH=$HOME/.local/bin:$PATH
 eval "$($HOME/.local/bin/mise activate bash)"
 
+
+fastfetch() {
+  local width="${COLUMNS:-0}"
+  local chica_config="$HOME/.config/fastfetch/config-chica.jsonc"
+  local normal_config="$HOME/.config/fastfetch/config.jsonc"
+
+  if [ "$width" -gt 0 ] && [ "$width" -lt 100 ]; then
+    command fastfetch -c "$chica_config"
+  else
+    command fastfetch -c "$normal_config"
+  fi
+}

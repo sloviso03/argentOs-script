@@ -25,11 +25,13 @@ exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 
 # 1. Key bindings
 bindsym $mod+Return exec $term
-bindsym $mod+w exec $browser
+bindsym $mod+b exec $browser
 bindsym $mod+q kill
 bindsym $mod+e exec $file-explorer
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
+bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
 
 # Noctalia IPC
 set $ipc noctalia msg
@@ -46,11 +48,27 @@ bindsym --locked XF86MonBrightnessDown exec $ipc brightness-down
 floating_modifier $mod normal
 bindsym $mod+Shift+r reload
 
-# Navegacion
+
+
+# ─── Window Focus (Vim-style) ───
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+
+# ─── Window Movement ───
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # Workspaces
 bindsym $mod+1 workspace number 1
@@ -75,8 +93,27 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
+
+# ─── Layout ───
+bindsym $mod+V layout toggle split
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
+
+# ─── Resize Mode ───
+bindsym $mod+Shift+z mode "resize"
+mode "resize" {
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10p
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 
 # 2. Input
 input * {
@@ -90,11 +127,10 @@ input "type:touchpad" {
     middle_emulation enabled
 }
 
-input "type:trackpoint" {
-    pointer_accel -0.5
-    accel_profile flat
-}
 
+include ~/.config/sway/noctalia
+
+# Appearance
 default_border pixel 2
 default_floating_border pixel 2
 smart_gaps off
@@ -102,7 +138,12 @@ smart_borders off
 gaps inner 4
 gaps outer 4
 
-client.focused           #8a8a8a #1a1a1a #e0e0e0 #444444    #8a8a8a
-client.focused_inactive  #3a3a3a #141414 #a0a0a0 #222222    #3a3a3a
-client.unfocused         #222222 #141414 #707070 #141414    #222222
-client.urgent            #e05f65 #141414 #e0e0e0 #e05f65    #e05f65
+# Clase                 borde    fondo    texto    indicador child_border
+client.focused          #52525b  #27272a  #ffffff  #52525b   #52525b
+client.focused_inactive #3f3f46  #18181b  #a1a1aa  #3f3f46   #3f3f46
+client.unfocused        #27272a  #18181b  #71717a  #27272a   #27272a
+client.urgent           #ef4444  #b91c1c  #ffffff  #ef4444   #ef4444
+client.placeholder      #27272a  #18181b  #ffffff  #27272a   #27272a
+client.background       #18181b
+
+
