@@ -7,6 +7,7 @@ set $mod Mod4
 set $term foot
 set $file-explorer dolphin
 set $browser librewolf
+set $lite-browser qutebrowser
 
 seat seat0 xcursor_theme Bibata-Modern-Ice 24
 exec_always {
@@ -25,7 +26,8 @@ exec /usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1
 
 # 1. Key bindings
 bindsym $mod+Return exec $term
-bindsym $mod+b exec $browser
+bindsym $mod+w exec $browser
+bindsym $mod+b exec $lite-browser
 bindsym $mod+q kill
 bindsym $mod+e exec $file-explorer
 bindsym $mod+Tab workspace next_on_output
