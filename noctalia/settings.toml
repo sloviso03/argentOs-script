@@ -41,7 +41,7 @@ source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
 [theme.templates]
-builtin_ids = [ "alacritty", "btop", "gtk3", "gtk4", "kcolorscheme","sway", "qt5", "qt6" ]
+builtin_ids = [ "btop", "gtk3", "gtk4", "kcolorscheme", "qt5", "qt6" ]
 community_ids = [ "papirus-icons" ]
 enable_community_templates = true
 
@@ -51,13 +51,13 @@ transition_duration = 500
 transition_on_startup = true
 
 [wallpaper.default]
-path = "/usr/share/backgrounds/argentOs/default.png"
+path = "/usr/share/backgrounds/argentOs/wallhaven-v96xyl.jpg"
 
 [wallpaper.last]
-path = "/usr/share/backgrounds/argentOs/default.png"
+path = "/usr/share/backgrounds/argentOs/wallhaven-v96xyl.jpg"
 
 [wallpaper.monitors.eDP-1]
-path = "/usr/share/backgrounds/argentOs/default.png"
+path = "/usr/share/backgrounds/argentOs/wallhaven-v96xyl.jpg"
 
 [weather]
 enabled = false

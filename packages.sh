@@ -11,7 +11,7 @@ sudo apt install -y \
   xdg-desktop-portal-wlr polkit-kde-agent-1 okular \
   libwebp7 librsvg2-common gsettings-desktop-schemas \
   wpasupplicant firmware-linux firmware-linux-nonfree \
-  curl gir1.2-nm-1.0 qt5ct qt6ct kde-style-breeze
+  curl gir1.2-nm-1.0 gir1.2-nma-1.0 qt5ct qt6ct kde-style-breeze
 
 
 sudo usermod -aG netdev $USER
