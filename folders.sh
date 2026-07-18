@@ -12,6 +12,7 @@ mkdir -p ~/.config/fastfetch
 cp fastfetch/* ~/.config/fastfetch
 
 cp -f bash/.bashrc "$HOME/.bashrc"
+cp -f bash/.bash_profile "$HOME/.bash_profile"
 source "$HOME/.bashrc"
 
 sudo update-alternatives --set editor /usr/bin/micro

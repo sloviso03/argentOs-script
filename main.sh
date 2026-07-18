@@ -31,6 +31,18 @@ esac
 
 
 
+
+read -r -p "¿Te gustaría instalar docker? (Y/N) " doit
+
+case "${doit}" in
+    [Yy]) source docker.sh
+    ;; *)
+    echo -e "${G}Saliendo sin instalar Docker.${RESET}" ;;
+esac
+
+
+
+
 echo -e "${G}Optimizando la gestión de red con NetworkManager...${RESET}"
 
 if [ -f /etc/network/interfaces ]; then
@@ -53,3 +65,33 @@ if [ -not -z "$SSID" ]; then
     echo -e "${B}Migrando conexión Wi-Fi ($SSID) a NetworkManager...${RESET}"
     sudo nmcli device wifi connect "$SSID" password "$PSK" > /dev/null 2>&1 &
 fi
+
+
+
+
+echo -e "${G}Configurando el autologin de la TTY1 para Sway...${RESET}"
+
+sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
+
+sudo bash -c "cat << 'EOF' > /etc/systemd/system/getty@tty1.service.d/override.conf
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --noclear  %I $TERM
+EOF"
+
+if dpkg -l | grep -q sddm; then
+    echo -e "${B}Removiendo SDDM para evitar conflictos...${RESET}"
+    sudo apt purge -y sddm
+    sudo apt autoremove -y
+fi
+
+
+
+
+read -r -p "¿Te gustaría reiniciar (recomendado)? (Y/N) " doit
+
+case "${doit}" in
+    [Yy]) sudo reboot now
+    ;; *)
+    echo -e "${G}Saliendo del script.${RESET}" ;;
+esac
