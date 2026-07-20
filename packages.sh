@@ -7,7 +7,7 @@ sudo apt install -y \
   network-manager network-manager-gnome bluez bluez-tools blueman \
   power-profiles-daemon upower audacious \
   pipewire-audio wireplumber pipewire-pulse pavucontrol \
-  grim slurp wl-clipboard brightnessctl dolphin \
+  grim slurp wl-clipboard brightnessctl dolphin kanshi wdisplays \
   xdg-desktop-portal-wlr polkit-kde-agent-1 okular \
   libwebp7 librsvg2-common gsettings-desktop-schemas \
   wpasupplicant firmware-linux firmware-linux-nonfree \

@@ -122,6 +122,11 @@ input * {
     xkb_layout "latam"
 }
 
+input "type:pointer" {
+    pointer_accel -0.2
+    accel_profile flat
+}
+
 input "type:touchpad" {
     dwt enabled
     tap enabled
@@ -129,12 +134,11 @@ input "type:touchpad" {
     middle_emulation enabled
 }
 
-
 include ~/.config/sway/noctalia
 
 # Appearance
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 4.5
+default_floating_border pixel 4.5
 smart_gaps off
 smart_borders off
 gaps inner 4
@@ -147,5 +151,4 @@ client.unfocused        #27272a  #18181b  #71717a  #27272a   #27272a
 client.urgent           #ef4444  #b91c1c  #ffffff  #ef4444   #ef4444
 client.placeholder      #27272a  #18181b  #ffffff  #27272a   #27272a
 client.background       #18181b
-
 
