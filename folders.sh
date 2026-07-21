@@ -16,10 +16,8 @@ cp -f bash/.bash_profile "$HOME/.bash_profile"
 source "$HOME/.bashrc"
 
 sudo update-alternatives --set editor /usr/bin/micro
-
 mkdir -p ~/.config/micro
 cp -r micro/* ~/.config/micro/
-
 
 sudo mkdir -p /usr/share/backgrounds/argentOs
 sudo cp -r wallpapers/* /usr/share/backgrounds/argentOs
@@ -33,5 +31,5 @@ cp noctalia/settings.toml ~/.local/state/noctalia/settings.toml
 
 
 
-
-
+sudo mkdir -p ~/.config/Code/User
+sudo cp -r vscode/* ~/.config/Code/User/

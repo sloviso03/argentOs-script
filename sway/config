@@ -6,8 +6,8 @@ include /etc/sway/config.d/*
 set $mod Mod4
 set $term foot
 set $file-explorer dolphin
-set $browser librewolf
-set $lite-browser qutebrowser
+set $browser firefox
+set $lite-browser chromium
 
 seat seat0 xcursor_theme Bibata-Modern-Ice 24
 exec_always {
