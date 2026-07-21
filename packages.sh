@@ -19,10 +19,11 @@ sudo usermod -aG netdev $USER
 sudo systemctl enable --now NetworkManager
 
 
-
 curl https://mise.run/bash | sh
-
-curl -f https://zed.dev/install.sh | sh
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$PATH"
+if command -v mise &> /dev/null; then
+    eval "$(mise activate bash)"
+fi
 
 
 source vscode.sh

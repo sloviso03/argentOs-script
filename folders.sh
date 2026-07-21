@@ -13,6 +13,8 @@ cp fastfetch/* ~/.config/fastfetch
 
 cp -f bash/.bashrc "$HOME/.bashrc"
 cp -f bash/.bash_profile "$HOME/.bash_profile"
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$PATH"
+hash -r
 source "$HOME/.bashrc"
 
 sudo update-alternatives --set editor /usr/bin/micro
@@ -24,12 +26,15 @@ sudo cp -r wallpapers/* /usr/share/backgrounds/argentOs
 sudo chmod -R 755 /usr/share/backgrounds/argentOs
 
 
-# Pasamos config de noctalia
-# cp ~/.local/state/noctalia/settings.toml ~/argentOs-script/noctalia/settings.toml
+# noctalia
 mkdir -p ~/.local/state/noctalia
+pkill -f noctalia 2>/dev/null
 cp noctalia/settings.toml ~/.local/state/noctalia/settings.toml
 
+if pgrep -x sway > /dev/null; then
+    noctalia --reload 2>/dev/null &
+fi
 
 
-sudo mkdir -p ~/.config/Code/User
-sudo cp -r vscode/* ~/.config/Code/User/
+mkdir -p ~/.config/Code/User
+cp -r vscode/* ~/.config/Code/User/
