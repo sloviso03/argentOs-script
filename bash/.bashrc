@@ -74,6 +74,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export MOZ_ENABLE_WAYLAND=1
 export PATH=$HOME/.local/bin:$PATH
 eval "$($HOME/.local/bin/mise activate bash)"
+alias code='nohup code --enable-features=UseOzonePlatform --ozone-platform=wayland >/dev/null 2>&1'
 
 
 fastfetch() {
