@@ -60,23 +60,6 @@ if ! shopt -oq posix; then
 fi
 
 
-# Micro as default editor
-export EDITOR="micro"
-export VISUAL="micro"
-
-
-# FZF integration
-if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
-  source /usr/share/doc/fzf/examples/key-bindings.bash
-fi
-
-export QT_QPA_PLATFORMTHEME=qt5ct
-export MOZ_ENABLE_WAYLAND=1
-export PATH=$HOME/.local/bin:$PATH
-eval "$($HOME/.local/bin/mise activate bash)"
-alias code='nohup code --enable-features=UseOzonePlatform --ozone-platform=wayland >/dev/null 2>&1'
-
-
 fastfetch() {
   local width="${COLUMNS:-0}"
   local chica_config="$HOME/.config/fastfetch/config-chica.jsonc"
@@ -88,3 +71,27 @@ fastfetch() {
     command fastfetch -c "$normal_config"
   fi
 }
+
+
+# Micro as default editor
+export EDITOR="micro"
+export VISUAL="micro"
+
+
+# FZF integration
+if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
+  source /usr/share/doc/fzf/examples/key-bindings.bash
+fi
+
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+export MOZ_ENABLE_WAYLAND=1
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$PATH"
+
+alias code='nohup code --enable-features=UseOzonePlatform --ozone-platform=wayland >/dev/null 2>&1'
+
+
+
+if [ -x "$HOME/.local/bin/mise" ]; then
+    eval "$($HOME/.local/bin/mise activate bash)"
+fi

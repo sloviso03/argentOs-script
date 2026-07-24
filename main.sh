@@ -41,17 +41,15 @@ esac
 
 
 
-
-
 echo -e "${G}Instalando todas las dependencias...${RESET}";
-source packages.sh
-source ./noctalia/noctalia.sh
+bash packages.sh
+bash ./noctalia/noctalia.sh
 
 echo -e "${G}Instalando las configuraciones...${RESET}";
-source folders.sh
+bash folders.sh
 
 echo -e "${G}Instalando el cursor...${RESET}";
-source cursor.sh
+bash cursor.sh
 
 echo -e "${G}Instalación base completada.${RESET}"
 
@@ -60,7 +58,7 @@ mise doctor
 read -r -p "¿Te gustaría pasar al menú de lenguajes de programación? (Y/N) " doit
 
 case "${doit}" in
-    [Yy]) source options.sh
+    [Yy]) bash options.sh
     ;; *)
     echo -e "${G}Saliendo sin abrir el menú de lenguajes.${RESET}" ;;
 esac
@@ -71,7 +69,7 @@ esac
 read -r -p "¿Te gustaría instalar docker? (Y/N) " doit
 
 case "${doit}" in
-    [Yy]) source docker.sh
+    [Yy]) bash docker.sh
     ;; *)
     echo -e "${G}Saliendo sin instalar Docker.${RESET}" ;;
 esac
@@ -96,31 +94,33 @@ sudo systemctl restart networking
 sudo systemctl restart NetworkManager
 
 SSID=$(sudo awk '/wpa-ssid/ {print $2}' /etc/network/interfaces | tr -d '# ')
-if [ -not -z "$SSID" ]; then
+if [ -n "$SSID" ]; then
     PSK=$(sudo awk '/wpa-psk/ {print $2}' /etc/network/interfaces | tr -d '# ')
     echo -e "${B}Migrando conexión Wi-Fi ($SSID) a NetworkManager...${RESET}"
     sudo nmcli device wifi connect "$SSID" password "$PSK" > /dev/null 2>&1 &
 fi
 
 
+echo -e "${G}Instalando y configurando Greetd + Tuigreet...${RESET}"
+sudo apt install -y greetd tuigreet
+sudo rm -f /etc/systemd/system/getty@tty1.service.d/override.conf
+sudo mkdir -p /etc/greetd
+sudo bash -c 'cat << EOF > /etc/greetd/config.toml
+[default_session]
+command = "tuigreet --time --asterisks --sessions /usr/share/wayland-sessions:/usr/share/xsessions"
+user = "greeter"
+EOF'
 
+sudo systemctl enable greetd.service
 
-echo -e "${G}Configurando el autologin de la TTY1 para Sway...${RESET}"
-
-sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
-
-sudo bash -c "cat << 'EOF' > /etc/systemd/system/getty@tty1.service.d/override.conf
-[Service]
-ExecStart=
-ExecStart=-/sbin/agetty --noclear  %I $TERM
-EOF"
-
-if dpkg -l | grep -q sddm; then
-    echo -e "${B}Removiendo SDDM para evitar conflictos...${RESET}"
-    sudo apt purge -y sddm
-    sudo apt autoremove -y
-fi
-
+sudo mkdir -p /usr/share/wayland-sessions
+sudo bash -c 'cat << EOF > /usr/share/wayland-sessions/sway.desktop
+[Desktop Entry]
+Name=Sway
+Comment=An i3-compatible Wayland compositor
+Exec=sway
+Type=Application
+EOF'
 
 
 
