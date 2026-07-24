@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$PATH"
+
+
 RESET='\033[0m'
 G='\033[0;32m'
 B='\033[0;34m'
@@ -53,7 +56,16 @@ bash cursor.sh
 
 echo -e "${G}Instalación base completada.${RESET}"
 
-mise doctor
+
+if command -v mise &> /dev/null; then
+    eval "$(mise activate bash)"
+    mise doctor
+else
+    echo -e "${B}Cargando binario de mise directamente...${RESET}"
+    "$HOME/.local/share/mise/bin/mise" doctor
+fi
+
+
 
 read -r -p "¿Te gustaría pasar al menú de lenguajes de programación? (Y/N) " doit
 

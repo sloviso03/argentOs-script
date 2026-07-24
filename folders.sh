@@ -15,7 +15,6 @@ cp -f bash/.bashrc "$HOME/.bashrc"
 cp -f bash/.bash_profile "$HOME/.bash_profile"
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$PATH"
 hash -r
-source "$HOME/.bashrc"
 
 sudo update-alternatives --set editor /usr/bin/micro
 mkdir -p ~/.config/micro
