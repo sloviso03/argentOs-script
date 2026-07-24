@@ -89,40 +89,6 @@ esac
 
 
 
-# Login manager (SDDM + Tema Breeze)
-echo -e "${G}Instalando y configurando SDDM para Sway...${RESET}"
-echo "sddm shared/default-x-display-manager select sddm" | sudo debconf-set-selections
-sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    sddm \
-    sddm-theme-breeze \
-    qml-module-qtquick-controls \
-    qml-module-qtgraphicaleffects
-
-sudo mkdir -p /usr/share/wayland-sessions /etc/sddm.conf.d
-
-if [ ! -f /usr/share/wayland-sessions/sway.desktop ]; then
-    echo -e "${B}Creando sesión de Sway para SDDM...${RESET}"
-    sudo bash -c 'cat <<EOF > /usr/share/wayland-sessions/sway.desktop
-[Desktop Entry]
-Name=Sway
-Comment=An i3-compatible Wayland compositor
-Exec=sway
-Type=Application
-DesktopNames=sway
-EOF'
-fi
-
-sudo bash -c 'cat <<EOF > /etc/sddm.conf.d/custom.conf
-[General]
-DisplayServer=wayland
-
-[Theme]
-Current=breeze
-EOF'
-
-sudo systemctl enable sddm.service
-
-
 echo -e "${G}Optimizando la gestión de red con NetworkManager...${RESET}"
 
 if [ -f /etc/network/interfaces ]; then
