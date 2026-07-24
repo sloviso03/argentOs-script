@@ -89,6 +89,25 @@ esac
 
 
 
+
+echo -e "${G}Configurando el autologin de la TTY1 para Sway...${RESET}"
+
+sudo mkdir -p /etc/systemd/system/getty@tty1.service.d/
+
+sudo bash -c "cat << 'EOF' > /etc/systemd/system/getty@tty1.service.d/override.conf
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --noclear  %I $TERM
+EOF"
+
+if dpkg -l | grep -q sddm; then
+    echo -e "${B}Removiendo SDDM para evitar conflictos...${RESET}"
+    sudo apt purge -y sddm
+    sudo apt autoremove -y
+fi
+
+
+
 echo -e "${G}Optimizando la gestión de red con NetworkManager...${RESET}"
 
 if [ -f /etc/network/interfaces ]; then
