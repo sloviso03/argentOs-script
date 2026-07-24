@@ -89,6 +89,40 @@ esac
 
 
 
+# Login manager (SDDM + Tema Breeze)
+echo -e "${G}Instalando y configurando SDDM para Sway...${RESET}"
+echo "sddm shared/default-x-display-manager select sddm" | sudo debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    sddm \
+    sddm-theme-breeze \
+    qml-module-qtquick-controls \
+    qml-module-qtgraphicaleffects
+
+sudo mkdir -p /usr/share/wayland-sessions /etc/sddm.conf.d
+
+if [ ! -f /usr/share/wayland-sessions/sway.desktop ]; then
+    echo -e "${B}Creando sesión de Sway para SDDM...${RESET}"
+    sudo bash -c 'cat <<EOF > /usr/share/wayland-sessions/sway.desktop
+[Desktop Entry]
+Name=Sway
+Comment=An i3-compatible Wayland compositor
+Exec=sway
+Type=Application
+DesktopNames=sway
+EOF'
+fi
+
+sudo bash -c 'cat <<EOF > /etc/sddm.conf.d/custom.conf
+[General]
+DisplayServer=wayland
+
+[Theme]
+Current=breeze
+EOF'
+
+sudo systemctl enable sddm.service
+
+
 echo -e "${G}Optimizando la gestión de red con NetworkManager...${RESET}"
 
 if [ -f /etc/network/interfaces ]; then
@@ -111,28 +145,6 @@ if [ -n "$SSID" ]; then
     echo -e "${B}Migrando conexión Wi-Fi ($SSID) a NetworkManager...${RESET}"
     sudo nmcli device wifi connect "$SSID" password "$PSK" > /dev/null 2>&1 &
 fi
-
-
-echo -e "${G}Instalando y configurando Greetd + Tuigreet...${RESET}"
-sudo apt install -y greetd tuigreet
-sudo rm -f /etc/systemd/system/getty@tty1.service.d/override.conf
-sudo mkdir -p /etc/greetd
-sudo bash -c 'cat << EOF > /etc/greetd/config.toml
-[default_session]
-command = "tuigreet --time --asterisks --sessions /usr/share/wayland-sessions:/usr/share/xsessions"
-user = "greeter"
-EOF'
-
-sudo systemctl enable greetd.service
-
-sudo mkdir -p /usr/share/wayland-sessions
-sudo bash -c 'cat << EOF > /usr/share/wayland-sessions/sway.desktop
-[Desktop Entry]
-Name=Sway
-Comment=An i3-compatible Wayland compositor
-Exec=sway
-Type=Application
-EOF'
 
 
 

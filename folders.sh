@@ -26,8 +26,14 @@ sudo chmod -R 755 /usr/share/backgrounds/argentOs
 
 
 # noctalia
+killall noctalia 2>/dev/null
 mkdir -p ~/.local/state/noctalia
 cp noctalia/settings.toml ~/.local/state/noctalia/settings.toml
+
+if pgrep -x "sway" > /dev/null; then
+    noctalia &>/dev/null &
+fi
+
 
 mkdir -p ~/.config/Code/User
 cp -r vscode/* ~/.config/Code/User/
