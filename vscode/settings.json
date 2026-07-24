@@ -118,6 +118,17 @@
         "**/*.py[co]": true,
         "**/__pycache__": true,
         "**/*_cache/": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/.vs": true
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/bin/**": true,
+        "**/obj/**": true,
+        "**/.vs/**": true
     },
 
     //* File Explorer */
@@ -143,6 +154,9 @@
         "**/*.code-search": true,
         "**/cmake-build*": true,
         "**/.history": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/.vs": true
     },
 
     "outline.icons": true,

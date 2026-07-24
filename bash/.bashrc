@@ -88,8 +88,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export MOZ_ENABLE_WAYLAND=1
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$PATH"
 
-alias code='nohup code --enable-features=UseOzonePlatform --ozone-platform=wayland >/dev/null 2>&1'
-
+alias code='nohup code --enable-features=UseOzonePlatform --ozone-platform=wayland --password-store=basic >/dev/null 2>&1'
 
 
 if [ -x "$HOME/.local/bin/mise" ]; then
