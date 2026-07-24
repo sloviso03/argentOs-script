@@ -37,13 +37,10 @@ polkit_agent = true
 builtin = "Kanagawa"
 community_palette = "Matecito"
 mode = "dark"
+pure_black_dark = true
 source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
-[theme.templates]
-builtin_ids = [ "btop", "gtk3", "gtk4", "kcolorscheme", "qt5", "qt6" ]
-community_ids = [ "papirus-icons" ]
-enable_community_templates = true
 
 [wallpaper]
 directory = "/usr/share/backgrounds/argentOs"
