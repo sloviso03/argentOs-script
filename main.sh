@@ -146,7 +146,7 @@ if [ -n "$SSID" ]; then
     sudo nmcli device wifi connect "$SSID" password "$PSK" > /dev/null 2>&1 &
 fi
 
-
+bash hide.sh
 
 read -r -p "¿Te gustaría reiniciar (recomendado)? (Y/N) " doit
 
