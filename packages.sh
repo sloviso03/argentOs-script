@@ -5,7 +5,7 @@ sudo apt update
 sudo apt install -y \
   git unzip sway autotiling fonts-jetbrains-mono fzf micro fastfetch \
   network-manager network-manager-gnome bluez bluez-tools blueman \
-  power-profiles-daemon upower vlc \
+  power-profiles-daemon upower vlc btop \
   pipewire-audio wireplumber pipewire-pulse pavucontrol \
   grim slurp wl-clipboard brightnessctl dolphin kanshi wdisplays \
   xdg-desktop-portal-wlr polkit-kde-agent-1 okular \
