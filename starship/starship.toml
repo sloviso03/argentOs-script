@@ -1,0 +1,59 @@
+add_newline = false
+
+format = """
+$username$hostname$directory$git_branch$git_status$python$nodejs$docker_context$cmd_duration$status $character
+"""
+
+[username]
+show_always = true
+style_user = "bold #eeeeee"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+format = "[@$hostname](#777777)"
+
+[directory]
+style = "bold #d8dee9"
+format = " [$path]($style)"
+truncation_length = 2
+truncate_to_repo = true
+home_symbol = "~"
+
+[git_branch]
+symbol = "git:"
+style = "#aaaaaa"
+format = " [$symbol$branch]($style)"
+
+[git_status]
+style = "#888888"
+format = " [$all_status$ahead_behind]($style)"
+
+[python]
+symbol = "py:"
+style = "#bdbdbd"
+format = " [$symbol$version]($style)"
+
+[nodejs]
+symbol = "js:"
+style = "#bdbdbd"
+format = " [$symbol$version]($style)"
+
+[docker_context]
+symbol = "docker:"
+style = "#999999"
+format = " [$symbol$context]($style)"
+
+[cmd_duration]
+min_time = 500
+style = "#666666"
+format = " [$duration]($style)"
+
+[status]
+disabled = false
+style = "#888888"
+format = " [exit:$status]($style)"
+
+[character]
+success_symbol = "[❯](#ffffff)"
+error_symbol = "[❯](#ff5555)"

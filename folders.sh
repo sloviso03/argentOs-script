@@ -11,6 +11,10 @@ cp foot/* ~/.config/foot
 mkdir -p ~/.config/fastfetch
 cp fastfetch/* ~/.config/fastfetch
 
+
+cp starship/* ~/.config
+
+
 cp -f bash/.bashrc "$HOME/.bashrc"
 cp -f bash/.bash_profile "$HOME/.bash_profile"
 export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$PATH"

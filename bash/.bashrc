@@ -13,17 +13,15 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	color_prompt=yes
+        color_prompt=yes
     else
-	color_prompt=
+        color_prompt=
     fi
 fi
 
@@ -44,7 +42,6 @@ esac
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
 fi
 
 if [ -f ~/.bash_aliases ]; then
@@ -59,6 +56,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Aliases
+alias ls='ls -l --color=auto'
+alias la='ls -la --color=auto'
+alias code='nohup code --enable-features=UseOzonePlatform --ozone-platform=wayland --password-store=basic >/dev/null 2>&1'
+
 
 fastfetch() {
   local width="${COLUMNS:-0}"
@@ -72,25 +74,25 @@ fastfetch() {
   fi
 }
 
-
-# Micro as default editor
+# Variables de entorno
 export EDITOR="micro"
 export VISUAL="micro"
-
+export QT_QPA_PLATFORMTHEME=qt5ct
+export MOZ_ENABLE_WAYLAND=1
 
 # FZF integration
 if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
   source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
 
+# Navegación con Zoxide (reemplazo de cd)
+eval "$(zoxide init bash --cmd cd)"
 
-export QT_QPA_PLATFORMTHEME=qt5ct
-export MOZ_ENABLE_WAYLAND=1
-export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$PATH"
-
-alias code='nohup code --enable-features=UseOzonePlatform --ozone-platform=wayland --password-store=basic >/dev/null 2>&1'
-
+# PATH y Mise
+export PATH="$HOME/.local/bin:$PATH"
 
 if [ -x "$HOME/.local/bin/mise" ]; then
     eval "$($HOME/.local/bin/mise activate bash)"
 fi
+
+eval "$(starship init bash)"
