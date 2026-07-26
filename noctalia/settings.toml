@@ -6,16 +6,17 @@ end = [ "clipboard", "volume", "battery", "notifications", "control-center" ]
 margin_edge = 4
 margin_ends = 4
 position = "bottom"
-start = [ "workspaces" ]
+start = [ "workspaces", "active_window" ]
 widget_spacing = 16
 
 [control_center]
-hidden_tabs = [ "weather", "calendar" ]
+hidden_tabs = [ "weather" ]
 
 [osd]
 position = "top_right"
 
 [shell]
+app_icon_colorize = true
 font_family = "JetBrains Mono"
 polkit_agent = true
 
@@ -27,18 +28,18 @@ polkit_agent = true
 
     [shell.panel]
     clipboard_position = "bottom_right"
-    control_center_placement = "floating"
     control_center_position = "bottom_right"
+    open_near_click_control_center = true
     session_placement = "floating"
     session_position = "bottom_right"
     wallpaper_placement = "floating"
 
 [theme]
-builtin = "Kanagawa"
-community_palette = "Matecito"
+builtin = "Gruvbox"
+community_palette = "Monochrome"
 mode = "dark"
 pure_black_dark = true
-source = "wallpaper"
+source = "community"
 wallpaper_scheme = "m3-content"
 
 
@@ -61,6 +62,10 @@ enabled = false
 
 [widget.clock]
 format = "{:%H:%M}"
+anchor = true
+tooltip_format = "{:%H:%M}"
+vertical_format = "{:%H:%M}"
+
 
 [widget.launcher]
 glyph = "rocket"

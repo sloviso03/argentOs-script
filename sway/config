@@ -128,9 +128,9 @@ smart_borders off
 gaps inner 4
 gaps outer 4
 
-client.focused          #777777 #000000 #ffffff #777777 #777777
-client.focused_inactive #2a2a2a #000000 #888888 #2a2a2a #2a2a2a
-client.unfocused        #141414 #000000 #555555 #141414 #141414
-client.urgent           #aaaaaa #000000 #ffffff #aaaaaa #aaaaaa
-client.placeholder      #000000 #000000 #ffffff #000000 #000000
+client.focused          #262626 #000000 #ffffff #262626 #262626
+client.focused_inactive #171717 #000000 #737373 #171717 #171717
+client.unfocused        #0a0a0a #000000 #525252 #0a0a0a #0a0a0a
+client.urgent           #ef4444 #18181b #ffffff #ef4444 #ef4444
+client.placeholder      #0a0a0a #000000 #ffffff #0a0a0a #0a0a0a
 client.background       #000000
