@@ -119,18 +119,40 @@ input "type:touchpad" {
     middle_emulation enabled
 }
 
+
+for_window [app_id="org.kde.dolphin"] {
+    floating enable
+    resize set width 1000 px height 700 px
+    move position center
+    border pixel 1
+}
+
+
 include ~/.config/sway/noctalia
 
-default_border pixel 2
-default_floating_border pixel 2
-smart_gaps off
-smart_borders off
-gaps inner 4
-gaps outer 2
 
-client.focused          #262626 #000000 #ffffff #262626 #262626
-client.focused_inactive #171717 #000000 #737373 #171717 #171717
-client.unfocused        #0a0a0a #000000 #525252 #0a0a0a #0a0a0a
-client.urgent           #ef4444 #18181b #ffffff #ef4444 #ef4444
-client.placeholder      #0a0a0a #000000 #ffffff #0a0a0a #0a0a0a
-client.background       #000000
+default_border pixel 1.5
+default_floating_border pixel 1.5
+
+
+gaps inner 4
+gaps outer 8
+
+corner_radius 8
+
+
+blur enable
+blur_radius 10
+blur_passes 3
+blur_noise 0.02
+
+
+layer_effects "noctalia" blur enable
+layer_effects "noctalia" blur_radius 12
+
+client.focused          #d8dee9 #111111 #e5e9f0 #d8dee9 #d8dee9
+client.focused_inactive #4c566a #0b0b0b #aeb6c4 #4c566a #4c566a
+client.unfocused        #1a1a1a #080808 #6b7078 #1a1a1a #1a1a1a
+client.urgent           #bf616a #111111 #eceff4 #bf616a #bf616a
+client.placeholder      #111111 #080808 #d8dee9 #111111 #111111
+client.background       #00000000

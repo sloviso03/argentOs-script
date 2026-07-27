@@ -46,6 +46,7 @@ esac
 
 echo -e "${G}Instalando todas las dependencias...${RESET}";
 bash packages.sh
+bash swayfx.sh
 bash ./noctalia/noctalia.sh
 
 echo -e "${G}Instalando las configuraciones...${RESET}";
