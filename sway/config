@@ -126,7 +126,7 @@ default_floating_border pixel 2
 smart_gaps off
 smart_borders off
 gaps inner 4
-gaps outer 4
+gaps outer 2
 
 client.focused          #262626 #000000 #ffffff #262626 #262626
 client.focused_inactive #171717 #000000 #737373 #171717 #171717
