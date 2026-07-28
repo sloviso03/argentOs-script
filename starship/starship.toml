@@ -11,7 +11,7 @@ format = "[$user]($style)"
 
 [hostname]
 ssh_only = false
-format = "[@$hostname](#777777)"
+format = "[@$hostname](bold #ff5555)"
 
 [directory]
 style = "bold #d8dee9"
