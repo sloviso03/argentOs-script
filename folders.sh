@@ -8,20 +8,17 @@ cp sway/* ~/.config/sway
 mkdir -p ~/.config/foot
 cp foot/* ~/.config/foot
 
-mkdir -p ~/.config/fastfetch
-cp fastfetch/* ~/.config/fastfetch
-
 
 cp starship/* ~/.config
 
 
 cp -f bash/.bashrc "$HOME/.bashrc"
 cp -f bash/.bash_profile "$HOME/.bash_profile"
-export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$PATH"
 hash -r
 
 sudo update-alternatives --set editor /usr/bin/micro
 mkdir -p ~/.config/micro
+bash micro.sh
 cp -r micro/* ~/.config/micro/
 
 sudo mkdir -p /usr/share/backgrounds/argentOs

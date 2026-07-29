@@ -1,22 +1,33 @@
 #!/usr/bin/env bash
 
 declare -A LENGUAJES_MAP=(
-    ["C# / .NET"]="dotnet"
-    ["Node.js"]="node"
-    ["Python"]="python"
-    ["Go"]="go"
-    ["Rust"]="rust"
-    ["Java"]="java"
+    ["C / C++"]="build-essential clang cmake ninja-build gdb lldb valgrind"
+    ["Rust"]="rustc cargo"
+    ["C# / .NET"]="csharp"
+    ["Go"]="golang"
+    ["Node.js"]="nodejs npm"
+    ["Python"]="python3 python3-pip python3-venv"
+    ["Java"]="default-jdk maven gradle"
+    ["PHP"]="php composer"
+    ["Ruby"]="ruby-full"
+    ["Lua"]="lua5.4 luarocks"
+    ["Perl"]="perl"
+    ["Haskell"]="ghc cabal-install"
 )
 
-
 OPCIONES=(
+    "C / C++"
+    "Rust"
     "C# / .NET"
+    "Go"
     "Node.js"
     "Python"
-    "Go"
-    "Rust"
     "Java"
+    "PHP"
+    "Ruby"
+    "Lua"
+    "Perl"
+    "Haskell"
 )
 
 ELEGIDOS=()
@@ -25,9 +36,8 @@ ELEGIDOS=()
 mostrarMenu() {
     clear
     echo "=========================================="
-    echo "       ArgentOs Developer Setup           "
+    echo "|       ArgentOs Developer Setup         |"
     echo "=========================================="
-    echo "¿Qué lenguajes/entornos querés instalar che?"
     echo ""
 
     for i in "${!OPCIONES[@]}"; do
@@ -49,78 +59,89 @@ mostrarMenu() {
     echo ""
 }
 
+
 ejecutarInstalacion() {
-    clear
+
     if [ ${#ELEGIDOS[@]} -eq 0 ]; then
-        echo "No seleccionaste ningún lenguaje. Saliendo..."
+        echo "No seleccionaste nada."
         exit 0
     fi
 
-    echo "=========================================="
-    echo " Iniciando instalación de herramientas..."
-    echo "=========================================="
-    echo ""
+    sudo apt update
 
-    for nombre_visible in "${ELEGIDOS[@]}"; do
-        local plugin="${LENGUAJES_MAP[$nombre_visible]}"
-        echo "--> Instalando y configurando $nombre_visible ($plugin)..."
-        mise use -g "${plugin}@latest"
+    PAQUETES=()
 
-        echo "✓ $nombre_visible listo."
-        echo "------------------------------------------"
+    for lenguaje in "${ELEGIDOS[@]}"; do
+        for paquete in ${LENGUAJES_MAP[$lenguaje]}; do
+            if [[ "$paquete" == "csharp" ]]; then
+                bash "$(dirname "$0")/c-sharp.sh"
+            else
+                PAQUETES+=("$paquete")
+            fi
+        done
     done
 
-
-    mise reshim
+    sudo apt install -y "${PAQUETES[@]}"
 
     echo ""
-    echo "=========================================="
-    echo " ¡Configuración completada con éxito!"
-    echo "=========================================="
-    echo ""
+    echo "Instalación terminada."
 }
 
+
 main() {
-    local total=${#OPCIONES[@]}
-    local opc_todos=$((total + 1))
-    local opc_limpiar=$((total + 2))
-    local opc_confirmar=$((total + 3))
-    local opc_salir=$((total + 4))
+
+    total=${#OPCIONES[@]}
+
+    todos=$((total+1))
+    limpiar=$((total+2))
+    confirmar=$((total+3))
+    salir=$((total+4))
+
 
     while true; do
-        mostrarMenu
-        read -p "Elige una opción: " entrada
 
-        if [[ "$entrada" == "$opc_salir" ]]; then
-            echo "Operación cancelada."
+        mostrarMenu
+
+        read -p "Elegí una opción: " entrada
+
+
+        if [[ "$entrada" == "$salir" ]]; then
             exit 0
-        elif [[ "$entrada" == "$opc_confirmar" ]]; then
+
+        elif [[ "$entrada" == "$confirmar" ]]; then
             break
-        elif [[ "$entrada" == "$opc_todos" ]]; then
+
+        elif [[ "$entrada" == "$todos" ]]; then
             ELEGIDOS=("${OPCIONES[@]}")
-        elif [[ "$entrada" == "$opc_limpiar" ]]; then
+
+        elif [[ "$entrada" == "$limpiar" ]]; then
             ELEGIDOS=()
+
         elif [[ "$entrada" -gt 0 && "$entrada" -le "$total" ]] 2>/dev/null; then
-            local seleccion=${OPCIONES[$((entrada-1))]}
+
+            seleccion=${OPCIONES[$((entrada-1))]}
 
             if [[ " ${ELEGIDOS[*]} " =~ " ${seleccion} " ]]; then
-                local nuevos_elegidos=()
-                for el in "${ELEGIDOS[@]}"; do
-                    if [[ "$el" != "$seleccion" ]]; then
-                        nuevos_elegidos+=("$el")
+
+                NUEVOS=()
+
+                for item in "${ELEGIDOS[@]}"; do
+                    if [[ "$item" != "$seleccion" ]]; then
+                        NUEVOS+=("$item")
                     fi
                 done
-                ELEGIDOS=("${nuevos_elegidos[@]}")
+
+                ELEGIDOS=("${NUEVOS[@]}")
+
             else
                 ELEGIDOS+=("$seleccion")
             fi
-        else
-            echo "Opción no válida."
-            sleep 1
         fi
     done
 
+
     ejecutarInstalacion
 }
+
 
 main

@@ -3,9 +3,17 @@
     "tabsize": 4,
     "tabstospaces": true,
     "autoclose": true,
+    "autoindent": true,
     "rmtrailingws": true,
     "savecursor": true,
     "cursorline": true,
     "parseerrors": true,
-    "clipboard": "terminal"
+    "clipboard": "terminal",
+    "softwrap": false,
+    "scrollmargin": 5,
+    "autosave": 0,
+    "ignorecase": true,
+    "smartpaste": true,
+    "statusline": true,
+    "keymenu": false
 }

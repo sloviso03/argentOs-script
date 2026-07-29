@@ -61,19 +61,6 @@ alias ls='ls -l --color=auto'
 alias la='ls -la --color=auto'
 alias code='nohup code --enable-features=UseOzonePlatform --ozone-platform=wayland --password-store=basic >/dev/null 2>&1'
 
-
-fastfetch() {
-  local width="${COLUMNS:-0}"
-  local chica_config="$HOME/.config/fastfetch/config-chica.jsonc"
-  local normal_config="$HOME/.config/fastfetch/config.jsonc"
-
-  if [ "$width" -gt 0 ] && [ "$width" -lt 100 ]; then
-    command fastfetch -c "$chica_config"
-  else
-    command fastfetch -c "$normal_config"
-  fi
-}
-
 # Variables de entorno
 export EDITOR="micro"
 export VISUAL="micro"
@@ -85,14 +72,7 @@ if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
   source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
 
-# Navegación con Zoxide (reemplazo de cd)
-eval "$(zoxide init bash --cmd cd)"
-
-# PATH y Mise
-export PATH="$HOME/.local/bin:$PATH"
-
-if [ -x "$HOME/.local/bin/mise" ]; then
-    eval "$($HOME/.local/bin/mise activate bash)"
-fi
 
 eval "$(starship init bash)"
+eval "$(zoxide init bash --cmd cd)"
+export PATH="$HOME/.local/bin:$PATH"

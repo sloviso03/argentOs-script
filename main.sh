@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
-
-export PATH="$HOME/.local/bin:$HOME/.local/share/mise/bin:$PATH"
-
-
 RESET='\033[0m'
 G='\033[0;32m'
 B='\033[0;34m'
-
-
 
 
 echo -e "
@@ -43,7 +37,6 @@ case "${doit}" in
 esac
 
 
-
 echo -e "${G}Instalando todas las dependencias...${RESET}";
 bash packages.sh
 bash swayfx.sh
@@ -58,16 +51,6 @@ bash cursor.sh
 echo -e "${G}Instalación base completada.${RESET}"
 
 
-if command -v mise &> /dev/null; then
-    eval "$(mise activate bash)"
-    mise doctor
-else
-    echo -e "${B}Cargando binario de mise directamente...${RESET}"
-    "$HOME/.local/share/mise/bin/mise" doctor
-fi
-
-
-
 read -r -p "¿Te gustaría pasar al menú de lenguajes de programación? (Y/N) " doit
 
 case "${doit}" in
@@ -75,9 +58,6 @@ case "${doit}" in
     ;; *)
     echo -e "${G}Saliendo sin abrir el menú de lenguajes.${RESET}" ;;
 esac
-
-
-
 
 read -r -p "¿Te gustaría instalar docker? (Y/N) " doit
 
@@ -88,15 +68,8 @@ case "${doit}" in
 esac
 
 
-if dpkg -l | grep -q sddm; then
-    echo -e "${B}Removiendo SDDM para evitar conflictos...${RESET}"
-    sudo apt purge -y sddm
-    sudo apt autoremove -y
-fi
-
 
 echo -e "${G}Optimizando la gestión de red con NetworkManager...${RESET}"
-
 if [ -f /etc/network/interfaces ]; then
     sudo sed -i '/wlp3s0/s/^/# /' /etc/network/interfaces
     sudo sed -i '/wpa-ssid/s/^/# /' /etc/network/interfaces
@@ -117,6 +90,7 @@ if [ -n "$SSID" ]; then
     echo -e "${B}Migrando conexión Wi-Fi ($SSID) a NetworkManager...${RESET}"
     sudo nmcli device wifi connect "$SSID" password "$PSK" > /dev/null 2>&1 &
 fi
+
 
 bash hide.sh
 
