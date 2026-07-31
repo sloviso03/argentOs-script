@@ -4,7 +4,12 @@ set -e
 echo "Instalando SDDM..."
 
 sudo apt update
-sudo apt install -y sddm
+
+sudo apt install --no-install-recommends -y \
+    sddm \
+    plasma-discover \
+    partitionmanager
+
 
 echo "Creando sesión de Sway..."
 
