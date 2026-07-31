@@ -60,6 +60,7 @@ fi
 alias ls='ls -l --color=auto'
 alias la='ls -la --color=auto'
 alias code='nohup code --enable-features=UseOzonePlatform --ozone-platform=wayland --password-store=basic >/dev/null 2>&1'
+alias fastfetch='fastfetch --structure Title:Separator:Kernel:Uptime:Packages:WM:Terminal:Shell:Memory:Disk:Battery:LocalIp:Locale'
 
 # Variables de entorno
 export EDITOR="micro"
