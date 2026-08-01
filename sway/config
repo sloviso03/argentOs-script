@@ -5,7 +5,6 @@ set $mod Mod4
 set $term foot
 set $file-explorer dolphin
 set $browser firefox
-set $ranger ranger
 
 seat seat0 xcursor_theme Bibata-Modern-Ice 24
 exec_always {
@@ -27,7 +26,6 @@ bindsym $mod+Return exec $term
 bindsym $mod+w exec $browser
 bindsym $mod+q kill
 bindsym $mod+e exec $file-explorer
-bindsym alt+e exec $ranger
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
@@ -122,34 +120,23 @@ input "type:touchpad" {
 }
 
 
-for_window [app_id="org.kde.dolphin"] {
-    floating enable
-    resize set width 1200 px height 700 px
-    move position center
-    border pixel 1
-}
-
-
-for_window [app_id="ranger-floating"] floating enable
-for_window [app_id="ranger-floating"] resize set width 900 height 700
-for_window [app_id="ranger-floating"] move position center
-
 include ~/.config/sway/noctalia
 
+
+for_window [app_id="firefox-esr"] resize set width 1000 px height 600 px
 
 default_border pixel 1
 default_floating_border pixel 1
 smart_borders on
 
-gaps inner 8
-gaps outer 6
+gaps inner 6
+gaps outer 4
 
-corner_radius 10
-
+corner_radius 8
 
 blur enable
-blur_radius 10
-blur_passes 2
+blur_radius 5
+blur_passes 4
 blur_noise 0.05
 
 
@@ -168,3 +155,4 @@ client.unfocused         #202020 #00000000 #707070 #202020 #202020
 client.urgent           #bf616a #080808 #eceff4 #bf616a #bf616a
 client.placeholder      #080808 #080808 #606060 #080808 #080808
 client.background       #00000000
+exec_always --no-startup-id systemctl --user restart xdg-desktop-portal xdg-desktop-portal-kde
