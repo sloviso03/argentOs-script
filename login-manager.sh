@@ -44,8 +44,36 @@ echo " - Selector de escritorio"
 echo
 echo "Podrás elegir:"
 echo " - Sway"
-echo " - KDE"
-echo " - XFCE"
-echo " - GNOME"
 echo " - cualquier otro instalado"
 echo "===================================="
+
+
+
+echo "Instalando tema Qylock para SDDM..."
+
+sudo apt install --no-install-recommends -y \
+    git \
+    qt6-declarative-dev \
+    qt6-5compat-dev \
+    libqt6svg6 \
+    qml6-module-qtmultimedia \
+    qml6-module-qtquick-controls \
+    qml6-module-qtquick-layouts
+
+sudo rm -rf /tmp/qylock
+
+git clone https://github.com/Darkkal44/qylock.git /tmp/qylock
+
+sudo mkdir -p /usr/share/sddm/themes
+
+sudo cp -r /tmp/qylock/themes/* /usr/share/sddm/themes/
+
+sudo mkdir -p /etc/sddm.conf.d
+
+sudo tee /etc/sddm.conf.d/theme.conf >/dev/null <<EOF
+[Theme]
+Current=minecraft
+EOF
+
+echo "Tema Qylock instalado."
+

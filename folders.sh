@@ -8,6 +8,10 @@ cp sway/* ~/.config/sway
 mkdir -p ~/.config/foot
 cp foot/* ~/.config/foot
 
+mkdir -p ~/.config/fresh
+cp fresh/* ~/.config/fresh
+
+
 
 cp starship/* ~/.config
 

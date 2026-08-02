@@ -76,6 +76,8 @@ APPS_TO_HIDE=(
     "org.freedesktop.Xwayland"
     "notification-daemon"
     "xdg-desktop-portal-gtk"
+    "groovyConsole"
+    "ranger"
 )
 
 for app in "${APPS_TO_HIDE[@]}"; do

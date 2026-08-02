@@ -3,8 +3,8 @@ background_opacity = 0.9
 capsule_opacity = 0.5
 center = [ "launcher", "clock", "wallpaper" ]
 end = [ "clipboard", "volume", "battery", "notifications", "control-center" ]
-margin_edge = 10
-margin_ends = 10
+margin_edge = 4
+margin_ends = 4
 position = "bottom"
 start = [ "workspaces", "active_window" ]
 widget_spacing = 16
@@ -43,10 +43,6 @@ polkit_agent = true
     session_position = "bottom_right"
     wallpaper_placement = "floating"
 
-    [shell.screen_corners]
-    enabled = true
-
-
 [theme]
 builtin = "Gruvbox"
 community_palette = "Monochrome"
@@ -56,7 +52,7 @@ source = "community"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-        builtin_ids = [ "gtk3", "gtk4", "qt", "starship" ]
+    builtin_ids = [ "gtk3", "gtk4", "qt", "starship" ]
 
 [wallpaper]
 directory = "/usr/share/backgrounds/argentOs"
@@ -64,13 +60,13 @@ transition_duration = 500
 transition_on_startup = true
 
 [wallpaper.default]
-path = "/usr/share/backgrounds/argentOs/wallhaven-5ymlv9.png"
+path = "/usr/share/backgrounds/argentOs/default.png"
 
 [wallpaper.last]
-path = "/usr/share/backgrounds/argentOs/wallhaven-5ymlv9.png"
+path = "/usr/share/backgrounds/argentOs/default.png"
 
 [wallpaper.monitors.eDP-1]
-path = "/usr/share/backgrounds/argentOs/wallhaven-5ymlv9.png"
+path = "/usr/share/backgrounds/argentOs/default.png"
 
 [weather]
 enabled = false

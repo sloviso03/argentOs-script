@@ -1,0 +1,20 @@
+{
+  "theme": "builtin://high-contrast",
+  "editor": {
+    "line_wrap": false
+  },
+  "active_keybinding_map": "default",
+  "plugins": {
+    "vi_mode": {
+      "enabled": true,
+      "settings": {
+        "autoStart": false,
+        "arrowKeys": true,
+        "searchWordUnderCursor": true
+      }
+    }
+  },
+  "file_explorer": {
+    "side": "right"
+  }
+}

@@ -72,39 +72,18 @@ sudo systemctl enable libvirtd.service
 sudo systemctl start docker.service
 sudo systemctl start libvirtd.service
 
-echo "--> Creando servicio temporal para activar Docker Desktop tras el primer reinicio..."
+echo "--> Configurando Docker Desktop..."
 
-mkdir -p ~/.config/systemd/user
-
-cat > ~/.config/systemd/user/docker-desktop-first-login.service <<'EOF'
-[Unit]
-Description=Enable Docker Desktop on first login
-After=default.target
-
-[Service]
-Type=oneshot
-ExecStart=/bin/sh -c '\
-systemctl --user enable docker-desktop.service && \
-systemctl --user start docker-desktop.service && \
-systemctl --user disable docker-desktop-first-login.service && \
-rm -f ~/.config/systemd/user/docker-desktop-first-login.service && \
-systemctl --user daemon-reload'
-
-[Install]
-WantedBy=default.target
-EOF
+sudo loginctl enable-linger "$USER"
 
 systemctl --user daemon-reload
-systemctl --user enable docker-desktop-first-login.service
+systemctl --user enable docker-desktop.service || true
 
 echo
 echo "========================================================"
 echo "Docker se instaló correctamente."
 echo
-echo "Al reiniciar:"
-echo "  ✓ docker.service arrancará automáticamente."
-echo "  ✓ libvirtd.service arrancará automáticamente."
-echo "  ✓ Docker Desktop se habilitará automáticamente"
-echo "    en el primer inicio de sesión y luego eliminará"
-echo "    el servicio temporal."
+echo "IMPORTANTE:"
+echo "Cerrá sesión o reiniciá para aplicar grupos."
+echo "Docker Desktop arrancará automáticamente."
 echo "========================================================"

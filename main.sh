@@ -69,7 +69,22 @@ esac
 
 
 
+
 echo -e "${G}Optimizando la gestión de red con NetworkManager...${RESET}"
+
+SSID=""
+PSK=""
+
+if [ -f /etc/wpa_supplicant/wpa_supplicant.conf ]; then
+    SSID=$(sudo grep -m1 'ssid=' /etc/wpa_supplicant/wpa_supplicant.conf | sed 's/.*ssid=//' | tr -d '"')
+    PSK=$(sudo grep -m1 'psk=' /etc/wpa_supplicant/wpa_supplicant.conf | sed 's/.*psk=//' | tr -d '"')
+fi
+
+if [ -z "$SSID" ] && [ -f /etc/network/interfaces ]; then
+    SSID=$(sudo awk '/wpa-ssid/ {print $2}' /etc/network/interfaces)
+    PSK=$(sudo awk '/wpa-psk/ {print $2}' /etc/network/interfaces)
+fi
+
 if [ -f /etc/network/interfaces ]; then
     sudo sed -i '/wlp3s0/s/^/# /' /etc/network/interfaces
     sudo sed -i '/wpa-ssid/s/^/# /' /etc/network/interfaces
@@ -84,12 +99,12 @@ echo -e "${B}Reiniciando servicios de red...${RESET}"
 sudo systemctl restart networking
 sudo systemctl restart NetworkManager
 
-SSID=$(sudo awk '/wpa-ssid/ {print $2}' /etc/network/interfaces | tr -d '# ')
-if [ -n "$SSID" ]; then
-    PSK=$(sudo awk '/wpa-psk/ {print $2}' /etc/network/interfaces | tr -d '# ')
+if [ -n "$SSID" ] && [ -n "$PSK" ]; then
     echo -e "${B}Migrando conexión Wi-Fi ($SSID) a NetworkManager...${RESET}"
-    sudo nmcli device wifi connect "$SSID" password "$PSK" > /dev/null 2>&1 &
+    sudo nmcli connection delete "$SSID" 2>/dev/null
+    sudo nmcli device wifi connect "$SSID" password "$PSK"
 fi
+
 
 
 bash hide.sh
