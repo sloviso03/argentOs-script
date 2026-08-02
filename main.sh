@@ -4,28 +4,30 @@ G='\033[0;32m'
 B='\033[0;34m'
 
 
-echo -e "
-                                  _,met$$$$$gg.
-                               ,g$$$$$$$$$$$$$$$P.
-                             ,g$$P""       """Y$$.".
-                            ,$$P'              `$$$.
-                          ',$$P       ,ggs.     `$$b:
-                          `d$$'     ,$P"'   .    $$$
-                           $$P      d$'     ,    $$P
-                           $$:      $$.   -    ,d$$'
-                           $$;      Y$b._   _,d$P'
-                           Y$$.    `.`"Y$$$$P"'
-                           `$$b      "-.__
-                            `Y$$b
-                             `Y$$.
-                               `$$b.
-                                 `Y$$b.
-                                   `"Y$b._
-                                       `""""
+cat << 'EOF'
 
-    Este proyecto es openSource, cualquier persona puede contribuir, hacer
-    sus propias modificaciones y distribuirlo como desee.
-";
+                                     .d88b. 88888b. 888  888
+                                    d88P"88b888 "88b888  888
+                                    888  888888  888888  888
+                                    Y88b 888888  888Y88b 888
+                                     "Y88888888  888 "Y88888
+       (    )                            888 and debian? lol
+        ~oo~                        Y8b d88P   sloviso03
+         .. Gnu!                     "Y88P"
+         / =\   \=
+        -   -    -      =-=-The choice of the Linux generation-=-=
+
+       This software is open-source: you can redistribute it and/or
+       modify it under the terms of the GNU General Public License
+       as published by the Free Software Foundation.
+
+       This is distributed in the hope that it will be useful, but
+       WITHOUT ANY WARRANTY; without even the implied warranty of
+       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+       ASCII ART FROM: https://ascii.co.uk/art/gnu
+
+EOF
 
 
 echo -e "    Presiona cualquier tecla para continuar.";
