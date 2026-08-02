@@ -1,0 +1,57 @@
+{
+  "name": "vs2022-dark",
+  "extends": "builtin://dark",
+
+  "editor": {
+    "bg": [30, 30, 30],
+    "fg": [212, 212, 212],
+    "cursor": [174, 175, 173],
+    "selection_bg": [38, 79, 120]
+  },
+
+  "ui": {
+    "background": [30, 30, 30],
+    "foreground": [212, 212, 212],
+    "border": [63, 63, 70],
+    "active": [0, 122, 204]
+  },
+
+  "syntax": {
+    "keyword": {
+      "color": [86, 156, 214],
+      "modifier": ["bold"]
+    },
+
+    "string": [206, 145, 120],
+
+    "comment": {
+      "color": [106, 153, 85],
+      "modifier": ["italic"]
+    },
+
+    "number": [181, 206, 168],
+
+    "type": {
+      "color": [78, 201, 176]
+    },
+
+    "function": {
+      "color": [220, 220, 170]
+    },
+
+    "variable": {
+      "color": [156, 220, 254]
+    }
+  },
+
+  "diagnostics": {
+    "error": [244, 71, 71],
+    "warning": [255, 203, 107],
+    "info": [75, 195, 247]
+  },
+
+  "search": {
+    "match": [81, 100, 120],
+    "current": [145, 180, 210]
+  }
+}

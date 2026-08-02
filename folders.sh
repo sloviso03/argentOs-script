@@ -9,7 +9,7 @@ mkdir -p ~/.config/foot
 cp foot/* ~/.config/foot
 
 mkdir -p ~/.config/fresh
-cp fresh/* ~/.config/fresh
+cp -r fresh/* ~/.config/fresh
 
 
 

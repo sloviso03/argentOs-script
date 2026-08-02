@@ -1,0 +1,54 @@
+{
+  "name": "atomdark",
+  "extends": "builtin://dark",
+
+  "editor": {
+    "bg": [29, 31, 33],
+    "fg": [197, 200, 198],
+    "cursor": [150, 203, 254],
+    "selection_bg": [45, 47, 49]
+  },
+
+  "ui": {
+    "background": [29, 31, 33],
+    "foreground": [197, 200, 198],
+    "border": [80, 80, 80],
+    "active": [98, 177, 254]
+  },
+
+  "syntax": {
+    "comment": {
+      "color": [124, 124, 124],
+      "modifier": ["italic"]
+    },
+
+    "variable": [249, 238, 152],
+
+    "constant": [255, 115, 253],
+
+    "string": [168, 255, 96],
+
+    "keyword": {
+      "color": [150, 203, 254]
+    },
+
+    "type": [198, 197, 254],
+
+    "function": [150, 203, 254],
+
+    "special": [166, 226, 46],
+
+    "number": [255, 115, 253]
+  },
+
+  "diagnostics": {
+    "error": [255, 68, 68],
+    "warning": [238, 238, 119],
+    "info": [98, 177, 254]
+  },
+
+  "search": {
+    "match": [0, 0, 0],
+    "current": [180, 236, 133]
+  }
+}

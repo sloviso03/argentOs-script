@@ -1,17 +1,17 @@
 {
-  "theme": "builtin://high-contrast",
+  "theme": "atomdark",
   "editor": {
-    "line_wrap": false
+    "line_wrap": true,
+    "line_numbers": true,
+    "cursor_line": true,
+    "tab_size": 4,
+    "insert_spaces": true,
+    "auto_indent": true
   },
   "active_keybinding_map": "default",
   "plugins": {
     "vi_mode": {
-      "enabled": true,
-      "settings": {
-        "autoStart": false,
-        "arrowKeys": true,
-        "searchWordUnderCursor": true
-      }
+      "enabled": false
     }
   },
   "file_explorer": {

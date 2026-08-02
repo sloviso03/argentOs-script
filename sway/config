@@ -28,6 +28,8 @@ bindsym $mod+q kill
 bindsym $mod+e exec $file-explorer
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
+bindsym --whole-window $mod+button4 workspace prev
+bindsym --whole-window $mod+button5 workspace next
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
 
@@ -103,12 +105,13 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
+
 input * {
     xkb_layout "latam"
 }
 
 input "type:pointer" {
-    pointer_accel -0.2
+    pointer_accel 0.5
     accel_profile flat
 }
 
