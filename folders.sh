@@ -25,10 +25,8 @@ mkdir -p ~/.config/micro
 bash micro.sh
 cp -r micro/* ~/.config/micro/
 
-sudo mkdir -p /usr/share/backgrounds/argentOs
-sudo cp -r wallpapers/* /usr/share/backgrounds/argentOs
-sudo chmod -R 755 /usr/share/backgrounds/argentOs
-
+mkdir -p "$HOME/Pictures/wallpapers"
+sudo cp -r wallpapers/* mkdir "$HOME/Pictures/wallpapers"
 
 # noctalia
 killall noctalia 2>/dev/null

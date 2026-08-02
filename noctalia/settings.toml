@@ -45,28 +45,29 @@ polkit_agent = true
 
 [theme]
 builtin = "Gruvbox"
-community_palette = "Monochrome"
+community_palette = "Matecito"
 mode = "dark"
 pure_black_dark = true
-source = "community"
-wallpaper_scheme = "m3-content"
+source = "wallpaper"
+wallpaper_scheme = "muted"
 
     [theme.templates]
     builtin_ids = [ "gtk3", "gtk4", "qt", "starship" ]
 
 [wallpaper]
-directory = "/usr/share/backgrounds/argentOs"
+directory = "~/Pictures/wallpapers"
 transition_duration = 500
 transition_on_startup = true
 
-[wallpaper.default]
-path = "/usr/share/backgrounds/argentOs/default.png"
+    [wallpaper.default]
+    path = "~/Pictures/wallpapers/default.jpg"
 
-[wallpaper.last]
-path = "/usr/share/backgrounds/argentOs/default.png"
+    [wallpaper.last]
+    path = "~/Pictures/wallpapers/default.jpg"
 
-[wallpaper.monitors.eDP-1]
-path = "/usr/share/backgrounds/argentOs/default.png"
+    [wallpaper.monitors.eDP-1]
+    path = "~/Pictures/wallpapers/default.jpg"
+
 
 [weather]
 enabled = false
