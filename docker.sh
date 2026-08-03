@@ -2,10 +2,12 @@
 
 set -e
 
-echo "--> Actualizando el sistema..."
+REAL_USER="${SUDO_USER:-$USER}"
+USER_HOME=$(eval echo "~$REAL_USER")
+USER_ID=$(id -u "$REAL_USER")
+
 sudo apt update
 
-echo "--> Instalando dependencias necesarias y herramientas de virtualización (KVM/QEMU)..."
 sudo apt install -y \
     ca-certificates \
     curl \
@@ -16,7 +18,6 @@ sudo apt install -y \
     bridge-utils \
     gnome-terminal
 
-echo "--> Cargando módulos KVM..."
 sudo modprobe kvm
 if grep -q Intel /proc/cpuinfo; then
     sudo modprobe kvm_intel
@@ -24,7 +25,6 @@ elif grep -q AMD /proc/cpuinfo; then
     sudo modprobe kvm_amd
 fi
 
-echo "--> Configurando repositorio oficial de Docker..."
 sudo install -d -m 0755 /etc/apt/keyrings
 
 curl -fsSL https://download.docker.com/linux/debian/gpg \
@@ -43,7 +43,6 @@ EOF
 
 sudo apt update
 
-echo "--> Instalando Docker Engine..."
 sudo apt install -y \
     docker-ce \
     docker-ce-cli \
@@ -51,39 +50,35 @@ sudo apt install -y \
     docker-buildx-plugin \
     docker-compose-plugin
 
-echo "--> Descargando Docker Desktop..."
 curl -L \
     https://desktop.docker.com/linux/main/amd64/docker-desktop-amd64.deb \
     -o /tmp/docker-desktop.deb
 
-echo "--> Instalando Docker Desktop..."
 sudo apt install -y /tmp/docker-desktop.deb
 rm -f /tmp/docker-desktop.deb
 
-echo "--> Agregando usuario a los grupos..."
-sudo usermod -aG docker "$USER"
-sudo usermod -aG kvm "$USER"
-sudo usermod -aG libvirt "$USER"
+sudo usermod -aG docker "$REAL_USER"
+sudo usermod -aG kvm "$REAL_USER"
+sudo usermod -aG libvirt "$REAL_USER"
 
-echo "--> Habilitando servicios del sistema..."
 sudo systemctl enable docker.service
 sudo systemctl enable libvirtd.service
 
 sudo systemctl start docker.service
 sudo systemctl start libvirtd.service
 
-echo "--> Configurando Docker Desktop..."
+sudo loginctl enable-linger "$REAL_USER"
 
-sudo loginctl enable-linger "$USER"
+sudo -u "$REAL_USER" mkdir -p "$USER_HOME/.config/autostart"
+sudo -u "$REAL_USER" cp /usr/share/applications/docker-desktop.desktop "$USER_HOME/.config/autostart/"
 
-systemctl --user daemon-reload
-systemctl --user enable docker-desktop.service || true
+sudo -u "$REAL_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$USER_ID/bus" systemctl --user daemon-reload
+sudo -u "$REAL_USER" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$USER_ID/bus" systemctl --user enable --now docker-desktop.service
 
 echo
 echo "========================================================"
-echo "Docker se instaló correctamente."
+echo "Docker y Docker Desktop se configuraron correctamente."
 echo
 echo "IMPORTANTE:"
-echo "Cerrá sesión o reiniciá para aplicar grupos."
-echo "Docker Desktop arrancará automáticamente."
+echo "Cerrá sesión o reiniciá para que los permisos de grupo surtan efecto."
 echo "========================================================"
