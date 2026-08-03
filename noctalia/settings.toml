@@ -1,13 +1,13 @@
 [bar.default]
-background_opacity = 0.9
+background_opacity = 0.7
 capsule_opacity = 0.5
 center = [ "launcher", "clock", "wallpaper" ]
 end = [ "clipboard", "volume", "battery", "notifications", "control-center" ]
-margin_edge = 4
-margin_ends = 4
+margin_edge = 6
+margin_ends = 6
 position = "bottom"
 start = [ "workspaces", "active_window" ]
-widget_spacing = 16
+widget_spacing = 12
 
 [control_center]
 hidden_tabs = [ "weather" ]
@@ -60,14 +60,13 @@ transition_duration = 500
 transition_on_startup = true
 
     [wallpaper.default]
-    path = "~/Pictures/wallpapers/default.jpg"
+    path = "~/Pictures/wallpapers/10.jpg"
 
     [wallpaper.last]
-    path = "~/Pictures/wallpapers/default.jpg"
+    path = "~/Pictures/wallpapers/10.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "~/Pictures/wallpapers/default.jpg"
-
+    path = "~/Pictures/wallpapers/10.jpg"
 
 [weather]
 enabled = false

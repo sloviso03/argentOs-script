@@ -4,7 +4,7 @@ include /etc/sway/config.d/*
 set $mod Mod4
 set $term foot
 set $file-explorer dolphin
-set $browser MOZ_ENABLE_WAYLAND=1 firefox
+set $browser firefox
 
 seat seat0 xcursor_theme Bibata-Modern-Ice 24
 exec_always {
@@ -30,8 +30,8 @@ bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 bindsym --whole-window $mod+button4 workspace prev
 bindsym --whole-window $mod+button5 workspace next
-bindsym Print exec grim -g "$(slurp)" - | wl-copy
-bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+bindsym Print exec grim -g "$(slurp)" ~/Pictures/Screenshot_$(date +'%Y%m%d_%H%M%S').png && wl-copy < ~/Imágenes/Screenshot_$(date +'%Y%m%d_%H%M%S').png
+bindsym $mod+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshot_$(date +'%Y%m%d_%H%M%S').png && wl-copy < ~/Imágenes/Screenshot_$(date +'%Y%m%d_%H%M%S').png
 
 set $ipc noctalia msg
 bindsym $mod+space exec $ipc panel-toggle launcher
@@ -93,14 +93,14 @@ bindsym $mod+Shift+space floating toggle, resize set width 800 px height 500 px,
 
 bindsym $mod+Shift+z mode "resize"
 mode "resize" {
-    bindsym h resize shrink width 10px
-    bindsym j resize grow height 10px
-    bindsym k resize shrink height 10px
-    bindsym l resize grow width 10p
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    bindsym h resize shrink width 20px
+    bindsym j resize grow height 20px
+    bindsym k resize shrink height 20px
+    bindsym l resize grow width 20px
+    bindsym Left resize shrink width 20px
+    bindsym Down resize grow height 20px
+    bindsym Up resize shrink height 20px
+    bindsym Right resize grow width 20px
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -126,36 +126,60 @@ input "type:touchpad" {
 include ~/.config/sway/noctalia
 
 
+
+# ==============================================================================
+# (SwayFX)
+
+# Bordes y Espaciado
 default_border pixel 1
-default_floating_border pixel 1
+default_floating_border none
 smart_borders on
 
-gaps inner 6
+gaps inner 8
 gaps outer 4
+corner_radius 12
 
 
-corner_radius 10
+# Blur Oscuro
 blur enable
-blur_radius 10
-blur_passes 3
-blur_noise 0.05
+blur_passes 4
+blur_radius 8
+blur_noise 0.15
 
+blur_xray enable
+blur_brightness 0.60
+blur_contrast 1.25
+blur_saturation 0.85
 
-layer_effects "noctalia" blur enable
-layer_effects "noctalia" blur_radius 14
+# Atenuado de Ventanas Inactivas
+default_dim_inactive 0.10
+dim_inactive_colors.unfocused #000000FF
 
+# Sombras Sutiles
 shadows enable
-shadow_blur_radius 24
-shadow_color #000000aa
-shadow_inactive_color #00000055
+shadow_offset 0 8
+shadow_blur_radius 25
+shadow_color #000000AA
+shadow_inactive_color #00000044
 
 
-client.focused           #4c566a #00000000 #d8dee9 #4c566a #4c566a
-client.focused_inactive  #2e3440 #00000000 #888888 #2e3440 #2e3440
-client.unfocused         #1b1f27 #00000000 #555555 #1b1f27 #1b1f27
-client.urgent            #bf616a #00000000 #eceff4 #bf616a #bf616a
-client.placeholder      #111111 #111111 #444444 #111111 #111111
+# Efectos en Capas (Noctalia)
+layer_effects "noctalia" {
+    blur enable
+    blur_ignore_transparent false
+    corner_radius 12
+    shadows enable
+}
+
+
+# Esquema de Colores
+client.focused          #ffffff44 #00000000 #d8dee9 #ffffff44 #ffffff44
+client.focused_inactive #00000000 #00000000 #888888 #00000000 #00000000
+client.unfocused        #00000000 #00000000 #555555 #00000000 #00000000
+client.urgent           #bf616a88 #00000000 #eceff4 #bf616a88 #bf616a88
+client.placeholder      #111111   #111111   #444444 #111111   #111111
 client.background       #00000000
 
 
+# AUTOSTART SERVICIOS DEL SISTEMA
 exec_always --no-startup-id systemctl --user restart xdg-desktop-portal xdg-desktop-portal-kde
