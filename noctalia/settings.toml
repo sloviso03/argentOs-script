@@ -60,13 +60,13 @@ transition_duration = 500
 transition_on_startup = true
 
     [wallpaper.default]
-    path = "~/Pictures/wallpapers/10.jpg"
+    path = "~/Pictures/wallpapers/10.png"
 
     [wallpaper.last]
-    path = "~/Pictures/wallpapers/10.jpg"
+    path = "~/Pictures/wallpapers/10.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "~/Pictures/wallpapers/10.jpg"
+    path = "~/Pictures/wallpapers/10.png"
 
 [weather]
 enabled = false

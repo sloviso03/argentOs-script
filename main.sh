@@ -72,6 +72,33 @@ esac
 
 
 
+
+
+
+
+bash hide.sh
+
+
+
+read -r -p "¿Instalar SDDM como Login Manager? (Y/N) " doit
+
+case "$doit" in
+    [Yy])
+        bash login-manager.sh
+        ;;
+    *)
+        echo "Saltando instalación de SDDM."
+        ;;
+esac
+
+
+
+
+
+
+
+
+
 echo -e "${G}Optimizando la gestión de red con NetworkManager...${RESET}"
 
 SSID=""
@@ -108,21 +135,6 @@ if [ -n "$SSID" ] && [ -n "$PSK" ]; then
 fi
 
 
-
-bash hide.sh
-
-
-
-read -r -p "¿Instalar SDDM como Login Manager? (Y/N) " doit
-
-case "$doit" in
-    [Yy])
-        bash login-manager.sh
-        ;;
-    *)
-        echo "Saltando instalación de SDDM."
-        ;;
-esac
 
 
 read -r -p "¿Te gustaría reiniciar (recomendado)? (Y/N) " doit
