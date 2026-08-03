@@ -30,8 +30,8 @@ bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 bindsym --whole-window $mod+button4 workspace prev
 bindsym --whole-window $mod+button5 workspace next
-bindsym Print exec grim -g "$(slurp)" ~/Pictures/Screenshot_$(date +'%Y%m%d_%H%M%S').png && wl-copy < ~/Imágenes/Screenshot_$(date +'%Y%m%d_%H%M%S').png
-bindsym $mod+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshot_$(date +'%Y%m%d_%H%M%S').png && wl-copy < ~/Imágenes/Screenshot_$(date +'%Y%m%d_%H%M%S').png
+bindsym Print exec grim -g "$(slurp)" ~/Pictures/Screenshot_$(date +'%Y%m%d_%H%M%S').png && wl-copy < ~/Pictures/Screenshot_$(date +'%Y%m%d_%H%M%S').png
+bindsym $mod+Shift+s exec grim -g "$(slurp)" ~/Pictures/Screenshot_$(date +'%Y%m%d_%H%M%S').png && wl-copy < ~/Pictures/Screenshot_$(date +'%Y%m%d_%H%M%S').png
 
 set $ipc noctalia msg
 bindsym $mod+space exec $ipc panel-toggle launcher
