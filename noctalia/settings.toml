@@ -2,7 +2,7 @@
 background_opacity = 0.7
 capsule_opacity = 0.5
 center = [ "launcher", "clock", "wallpaper" ]
-end = [ "clipboard", "volume", "battery", "notifications", "control-center" ]
+end = [ "clipboard", "volume", "battery", "tray", "notifications", "control-center" ]
 margin_edge = 6
 margin_ends = 6
 position = "bottom"
@@ -83,6 +83,9 @@ glyph = "rocket"
 
 [widget.notifications]
 enabled = true
+
+[widget.tray]
+drawer = true
 
 [widget.workspaces]
 focused_output_only = true
