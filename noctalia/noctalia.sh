@@ -7,4 +7,4 @@ rm /tmp/nickh-archive-keyring.deb
 
 sudo wget -O /etc/apt/sources.list.d/noctalia-trixie.sources https://pkg.noctalia.dev/deb/noctalia-trixie.sources
 sudo apt update
-sudo apt install noctalia
+sudo apt install -y noctalia

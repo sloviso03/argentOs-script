@@ -9,7 +9,7 @@ sudo apt install -y \
   network-manager network-manager-gnome bluez bluez-tools blueman \
   power-profiles-daemon upower vlc btop \
   pipewire-audio wireplumber pipewire-pulse pavucontrol \
-  grim slurp wl-clipboard brightnessctl dolphin kanshi wdisplays \
+  grim slurp wl-clipboard brightnessctl dolphin nwg-displays \
   xdg-desktop-portal-wlr polkit-kde-agent-1 okular ranger \
   libwebp7 librsvg2-common gsettings-desktop-schemas \
   wpasupplicant firmware-linux firmware-linux-nonfree nodejs npm \
@@ -41,7 +41,7 @@ for file in /etc/pam.d/login /etc/pam.d/passwd /etc/pam.d/gdm-password /etc/pam.
 done
 
 
-curl -sS https://starship.rs/install.sh | sh
+curl -sS https://starship.rs/install.sh | sh -s -- -y
 
 
 curl -sL $(curl -s https://api.github.com/repos/sinelaw/fresh/releases/latest | grep "browser_download_url.*_$(dpkg --print-architecture)\.deb" | cut -d '"' -f 4) -o fresh-editor.deb && sudo dpkg -i fresh-editor.deb
